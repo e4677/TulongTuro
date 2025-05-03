@@ -1,0 +1,67 @@
+@import "global.css";
+
+.subject-title {
+	font: var(--font-400);
+}
+
+.subject-main {
+	grid-area: main;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: var(--spacing-1);
+	padding-top: var(--spacing-3);
+}
+
+.subject-title-card {
+	font: var(--font-700);
+	width: min(900px, 100% - 2rem);
+	aspect-ratio: 3.5 / 1;
+	border-radius: var(--rounded-sm);
+	display: flex;
+	align-items: flex-end;
+	padding: var(--spacing-1) var(--spacing-2);
+
+	/* background must be dynamic. its color must be inherited from its card color */
+	background: linear-gradient(to right, var(--clr-card-1));
+}
+
+.subject-materials {
+	width: min(900px, 100% - 2rem);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: var(--spacing-1);
+}
+
+.material {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: var(--rounded-sm);
+	padding: var(--spacing-1);
+	background: var(--clr-neutral);
+}
+
+.icon-title-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--spacing-1);
+}
+
+.title-author-wrapper {
+	width: fit-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.author {
+	color: var(--clr-txt-dark);
+	font: var(--font-300);
+}

@@ -5,6 +5,7 @@
 	/* Colors */
 	--clr-bg: #14182e;
 	--clr-txt: #fcfeff;
+	--clr-txt-dark: #acafb0;
 	--clr-neutral: #2c3239;
 
 	/* Card Colors */
@@ -87,9 +88,13 @@ header {
 
 h1 {
 	font: var(--font-500);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--spacing-05);
 }
 
-a {
+:is(a) {
 	color: inherit;
 	text-decoration: none;
 	cursor: pointer;
@@ -99,7 +104,7 @@ a {
 	}
 }
 
-button {
+:is(button) {
 	background: none;
 	color: inherit;
 	border: none;
@@ -142,13 +147,16 @@ aside {
 	padding: var(--spacing-2);
 }
 
-h2 {
+:is(h2) {
 	font: var(--font-500);
 }
 
 ul {
-	margin-top: var(--spacing-1);
 	list-style-type: none;
+}
+
+.sidebar-subjects-list {
+	margin-top: var(--spacing-1);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -156,12 +164,12 @@ ul {
 	gap: var(--spacing-2);
 }
 
-li {
+.sidebar-subject-item {
 	position: relative;
 	margin-left: var(--spacing-2);
 }
 
-li::before {
+.sidebar-subject-item::before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -171,18 +179,18 @@ li::before {
 	aspect-ratio: 1;
 }
 
-li:nth-child(4n + 1)::before {
+.sidebar-subject-item:nth-child(4n + 1)::before {
 	background: linear-gradient(var(--clr-card-1));
 }
 
-li:nth-child(4n + 2)::before {
+.sidebar-subject-item:nth-child(4n + 2)::before {
 	background: linear-gradient(var(--clr-card-2));
 }
 
-li:nth-child(4n + 3)::before {
+.sidebar-subject-item:nth-child(4n + 3)::before {
 	background: linear-gradient(var(--clr-card-3));
 }
 
-li:nth-child(4n)::before {
+.sidebar-subject-item:nth-child(4n)::before {
 	background: linear-gradient(var(--clr-card-4));
 }

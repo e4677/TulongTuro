@@ -1,31 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= subjectTitle %> | Tulong-Turo</title>
-</head>
-<body>
-  Subject: <%= subjectTitle %> 
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><%= subjectTitle %> | Tulong-Turo</title>
 
-  <!-- @Timo, sample lang para alam mo yung didisplay na data, you can safely delete this code -->
-   <div class="delete this entire div">
-    <!-- sample static -->
-    <div>
-      <div>Title: wahwah</div>
-      <div>Author: wohwoh</div>
-      <div>Created: wihwih</div>
-    </div>
-    <!-- dynamic -->
-    <% for (let i = 0; i < lessons.length; i++) { %>
-      <hr>
-      <div>
-        <div>Title: <%= lessons[i].title %> </div>
-        <div>Author: <%= lessons[i].users.first_name %> <%= lessons[i].users.last_name %> </div>
-        <div>Created: <%= lessons[i].created_at %> </div>
-      </div>
-    <% } %>  
-   </div>
+		<!-- Icons -->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@1&ROND@100&icon_names=add,attach_file,chevron_right,close,home,menu&display=block" />
 
-</body>
+		<link rel="stylesheet" href="/css/subject.css" />
+	</head>
+	<body>
+		<header>
+			<nav class="header-nav">
+				<div class="menu-and-logo-wrapper">
+					<!-- hamburger icon -->
+					<button class="menu-button">
+						<span class="material-symbols-outlined"> menu </span>
+					</button>
+
+					<!-- Logo -->
+					<h1>
+						<a href="/"> Tulong Turo </a>
+
+						<!-- Dynamic subject title -->
+						<span class="material-symbols-outlined"> chevron_right </span>
+						<a class="subject-title" href=""><%= subjectTitle %></a>
+					</h1>
+				</div>
+
+				<!-- Add subj button -->
+				<div class="add-and-acc-wrapper">
+					<button class="add-subject-button">
+						Add subjects
+						<span class="material-symbols-outlined"> add </span>
+					</button>
+
+					<!-- acc icon -->
+					<div class="account-wrapper"> </div>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Sidebar -->
+		<aside class="">
+			<nav class="sidebar-nav">
+				<h2>Subjects</h2>
+
+				<!-- @Vlad, nag-eerror dito 'yung dynamic subjects list kaya tinanggal ko muna -->
+				<!-- <ul class="subjects-list" role="list">
+				</ul> -->
+			</nav>
+		</aside>
+
+		<main class="subject-main">
+			<div class="subject-title-card"> <%= subjectTitle %> </div>
+
+			<ul class="subject-materials">
+				<% for (let i = 0; i < lessons.length; i++) { %>
+				<li class="material">
+					<a href="" class="material-link">
+						<div class="icon-title-wrapper">
+							<span class="material-symbols-outlined"> attach_file </span>
+							<div class="title-author-wrapper">
+								<span class="title"><%= lessons[i].title %></span>
+								<span class="author">
+									<%= lessons[i].users.first_name %>
+									<%=lessons[i].users.last_name %>
+								</span>
+							</div>
+						</div>
+
+						<!-- Date here (Format: May 3)-->
+						<span></span>
+						<!-- <span class="date-created"><%= lessons[i].created_at %></span> -->
+					</a>
+				</li>
+				<% } %>
+			</ul>
+		</main>
+	</body>
 </html>

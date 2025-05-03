@@ -25,7 +25,7 @@
 
 					<!-- Logo -->
 					<h1>
-						<a href=""> Tulong Turo </a>
+						<a href="/"> Tulong Turo </a>
 					</h1>
 				</div>
 
@@ -47,11 +47,14 @@
 			<nav class="sidebar-nav">
 				<h2>Subjects</h2>
 
-
-				<ul class="subjects-list" role="list">
+				<ul class="sidebar-subjects-list" role="list">
 					<% for (let i = 0; i < subjects.length; i++) { %>
-						<li><a href="/lessons/<%- subjects[i].slug %>"><%- subjects[i].title %></a></li>
-					<% } %>  
+					<li class="sidebar-subject-item"
+						><a href="/lessons/<%- subjects[i].slug %>"
+							><%- subjects[i].title %></a
+						></li
+					>
+					<% } %>
 				</ul>
 			</nav>
 		</aside>
@@ -64,8 +67,10 @@
 			<!-- Subjects grid (make this grid dynamic for subjects) -->
 			<div class="subjects-grid">
 				<% for (let i = 0; i < subjects.length; i++) { %>
-					<a class="sub" href="/lessons/<%- subjects[i].slug %>"><%- subjects[i].title %></a>
-				<% } %> 
+				<a class="sub" href="/lessons/<%- subjects[i].slug %>"
+					><%- subjects[i].title %></a
+				>
+				<% } %>
 			</div>
 		</main>
 	</body>
