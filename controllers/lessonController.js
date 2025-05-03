@@ -1,4 +1,5 @@
 import supabase from '../config/supabaseClient.js';
+import { marked } from 'marked';
 
 export const renderHomepage = async (req, res) => {
   try {
@@ -140,7 +141,8 @@ export const renderLesson = async (req, res) => {
     });
   }
 
-  res.render('lesson', { lesson });
+  const content = marked(lesson.content);
+  res.render('lesson', { lesson, content });
 };
 
 export const getLessonContent = async (req, res) => {

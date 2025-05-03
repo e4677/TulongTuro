@@ -8,8 +8,15 @@
   <link rel="stylesheet" href="/css/lesson.css">
 </head>
 <body>
-  Lesson Title: <%= lesson.title %> <br>
-  Lesson Content: <%= lesson.content %> <br>
-  Author: <%= lesson.users.first_name %> <%= lesson.users.last_name %>
+  <div>
+    <div>Lesson Title: <%= lesson.title %> </div>
+    <div>Author: <%= lesson.users.first_name %> <%= lesson.users.last_name %></div>
+    <div>Lesson Content</div>
+    <div>
+      <!-- matik nicoconvert nung nasa ilalim yung markdown text to html content for rendering
+      -->
+      <%- content %> 
+    </div>
+  </div>
 </body>
 </html>
