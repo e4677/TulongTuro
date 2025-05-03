@@ -13,5 +13,4 @@ lessonRouter.post("/api/lessons", verifyJWT, lessonController.getLessons);
 lessonRouter.post("/api/create", verifyJWT, lessonController.createLesson);
 
 
-
 export default lessonRouter;

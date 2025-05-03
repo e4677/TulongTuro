@@ -57,9 +57,29 @@ export const getLessons = async (req, res) => {
 
 export const renderLesson = async (req, res) => {
   const lessonId = req.params.lessonId;
-  const lessonTitle = "UML Diagrams"; // TK: replace with actual lesson title
 
-  res.render('lesson', { lessonId, lessonTitle });
+  const { data: lesson, error } = await supabase
+    .from('lessons')
+    .select("*")
+    .eq('id', lessonId)
+    .single();
+
+  if (error) {
+    console.error('Error fetching lesson:', error.message);
+    return res.status(500).render('error', {
+      message: 'An error occurred while retrieving the lesson.',
+      error: error.message,
+    });
+  }
+
+  if (!lesson) {
+    return res.status(404).render('error', {
+      message: 'Lesson not found.',
+      error: `No lesson with ID ${lessonId}`,
+    });
+  }
+
+  res.render('lesson', { lesson });
 };
 
 export const getLessonContent = async (req, res) => {

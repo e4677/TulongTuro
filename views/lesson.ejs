@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= lessonTitle %> | Tulong-Turo</title>
+  <title><%= lesson.title %> | Tulong-Turo</title>
 
   <link rel="stylesheet" href="/css/lesson.css">
 </head>
 <body>
-  Lesson ID: <%= lessonId %>
+  Lesson ID: <%= lesson.id %>
+  <br>
+  Lesson Content: <%= lesson.content %>
 </body>
 </html>
