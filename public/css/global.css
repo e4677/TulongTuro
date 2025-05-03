@@ -169,6 +169,10 @@ ul {
 	margin-left: var(--spacing-2);
 }
 
+.sidebar-subject-item > a {
+	display: inline-block;
+}
+
 .sidebar-subject-item::before {
 	content: "";
 	position: absolute;
