@@ -60,7 +60,7 @@ export const renderLesson = async (req, res) => {
 
   const { data: lesson, error } = await supabase
     .from('lessons')
-    .select("*")
+    .select("*, users(*)")
     .eq('id', lessonId)
     .single();
 
