@@ -7,5 +7,26 @@
 </head>
 <body>
   Subject: <%= subjectTitle %> 
+
+  <!-- @Timo, sample lang para alam mo yung didisplay na data, you can safely delete this code -->
+   <div class="delete this entire div">
+    <!-- sample static -->
+    <div>
+      <div>Title: wahwah</div>
+      <div>Author: wohwoh</div>
+      <div>Created: wihwih</div>
+    </div>
+    <!-- dynamic -->
+    <% for (let i = 0; i < lessons.length; i++) { %>
+      <hr>
+      <div>
+        <div>Title: <%= lessons[i].title %> </div>
+        <div>Author: <%= lessons[i].users.first_name %> <%= lessons[i].users.last_name %> </div>
+        <div>Created: <%= lessons[i].created_at %> </div>
+      </div>
+      <%= lessons[i].title %> 
+    <% } %>  
+   </div>
+
 </body>
 </html>
