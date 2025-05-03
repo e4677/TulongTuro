@@ -6,27 +6,36 @@
   <title>Create Lesson | Tulong-Turo</title>
 
   <link rel="stylesheet" href="/css/create.css">
+  <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+  <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
 </head>
 <body>
   Create Lesson
 
   <div class="form">
     <div class="field">
+      <label for="subject">Subject</label>
+      <input type="text" name="subject" id="subject" placeholder="Subject">
+    </div>
+    <div class="field">
       <label for="title">Title</label>
       <input type="text" name="title" id="title" placeholder="Title">
     </div>
     <div class="field">
       <label for="content">Content</label>
-      <input type="text" name="content" id="content" placeholder="Content">
-    </div>
-    <div class="field">
-      <label for="subject">Subject</label>
-      <input type="text" name="subject" id="subject" placeholder="Subject">
+      <!-- @Timo, yung element for Content ay textarea, tapos ang id ay "content" para gumana yung Markdown editor 
+            you can move it anywhere basta may isang textarea element with id "content" 
+            normal pa rin naman ang styling ng size or colors for css i think 
+            refer to the line of code below na lang
+      -->
+      <textarea type="text" name="content" id="content" placeholder="Content"></textarea>
     </div>
     <button onclick="submit()">Create</button>
   </div>
 
   <script>
+    const easyMDE = new EasyMDE({element: document.getElementById('content')});
+
     async function submit() {
       // TK: adjust data
       const titleElement = document.querySelector('#title');
