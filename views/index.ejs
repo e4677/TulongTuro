@@ -47,15 +47,11 @@
 			<nav class="sidebar-nav">
 				<h2>Subjects</h2>
 
-				<!-- Subjects List (make this list dynamic for subjects )-->
+
 				<ul class="subjects-list" role="list">
-					<li><a>Software Engineering</a></li>
-					<li><a>Programming Languages</a></li>
-					<li><a>Life and Works of Rizal</a></li>
-					<li><a>Symbolic Logic</a></li>
-					<li><a>Professional Elective</a></li>
-					<li><a>Computer Architecture</a></li>
-					<li><a>Modeling and Simulation</a></li>
+					<% for (let i = 0; i < subjects.length; i++) { %>
+						<li><a href="/lessons/<%- subjects[i].slug %>"><%- subjects[i].title %></a></li>
+					<% } %>  
 				</ul>
 			</nav>
 		</aside>
@@ -67,13 +63,9 @@
 
 			<!-- Subjects grid (make this grid dynamic for subjects) -->
 			<div class="subjects-grid">
-				<a class="sub">Software Engineering</a>
-				<a class="sub">Programming Languages</a>
-				<a class="sub">Life and Works of Rizal</a>
-				<a class="sub">Symbolic Logic</a>
-				<a class="sub">Professional Elective</a>
-				<a class="sub">Computer Architecture</a>
-				<a class="sub">Modeling and Simulation</a>
+				<% for (let i = 0; i < subjects.length; i++) { %>
+					<a class="sub" href="/lessons/<%- subjects[i].slug %>"><%- subjects[i].title %></a>
+				<% } %> 
 			</div>
 		</main>
 	</body>
