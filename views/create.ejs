@@ -45,7 +45,7 @@
       const authorId = '<%= user.userId %>';
       const subjectSlug = subjectElement.value;
       const title = titleElement.value;
-      const content = contentElement.value;
+      const content = easyMDE.value();
 
       try {
         const res = await fetch("/api/create", {
