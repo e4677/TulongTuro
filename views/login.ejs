@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In | Tulong-Turo</title>
+
+  <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+  Log In
+
+  <div class="form">
+    <div class="field">
+      <label for="email">Email Address</label>
+      <input type="email" name="email" id="email" placeholder="Email Address">
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="Password">
+    </div>
+    <button onclick="submit()">Sign In</button>
+  </div>
+
+  <script>
+    async function submit() {
+      const emailInput = document.querySelector('#email');
+      const passwordInput = document.querySelector('#password');
+
+      const email = emailInput.value;
+      const password = passwordInput.value;
+
+      fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email, password
+        })
+      }).then(res => console.log(res.json()));
+    }
+  </script>
+</body>
+</html>
