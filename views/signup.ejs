@@ -54,15 +54,29 @@
       const password = passwordInput.value;
       const repeatPassword = repeatPasswordInput.value;
 
-      fetch("/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email, firstName, lastName, username, password
-        })
-      }).then(res => console.log(res.json()));
+      try {
+        const res = await fetch("/api/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ 
+            email, firstName, lastName, username, password
+          })
+        });
+  
+        const result = await res.json();
+  
+        if (res.ok) {
+          window.location.href = "/";
+        } else {
+          alert(result.message || "Login failed.");
+        }
+  
+      } catch (err) {
+        console.error("Login error:", err);
+        alert("An unexpected error occurred.");
+      }
     }
   </script>
 </body>

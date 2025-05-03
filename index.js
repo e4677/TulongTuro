@@ -2,6 +2,8 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import userRouter from './routes/userRouter.js';
+import lessonRouter from './routes/lessonRouter.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
@@ -13,8 +15,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.use('/', userRouter);
+app.use('/', lessonRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

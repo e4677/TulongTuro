@@ -24,7 +24,7 @@ export const verifyJWT = (req, res, next) => {
   const token = req.cookies.auth_token; 
 
   if (!token) {
-    return res.status(401).json({ message: "Authorization token missing." });
+    return res.redirect('/login');
   }
 
   try {
@@ -33,7 +33,7 @@ export const verifyJWT = (req, res, next) => {
     next(); 
   } catch (err) {
     console.error("JWT verification error:", err);
-    return res.status(401).json({ message: "Invalid or expired token." });
+    return res.redirect('/login');
   }
 };
 

@@ -26,19 +26,31 @@
     async function submit() {
       const emailInput = document.querySelector('#email');
       const passwordInput = document.querySelector('#password');
-
+  
       const email = emailInput.value;
       const password = passwordInput.value;
-
-      fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email, password
-        })
-      }).then(res => console.log(res.json()));
+  
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ email, password })
+        });
+  
+        const result = await res.json();
+  
+        if (res.ok) {
+          window.location.href = "/";
+        } else {
+          alert(result.message || "Login failed.");
+        }
+  
+      } catch (err) {
+        console.error("Login error:", err);
+        alert("An unexpected error occurred.");
+      }
     }
   </script>
 </body>
