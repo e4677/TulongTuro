@@ -7,9 +7,10 @@ const lessonRouter = express.Router();
 lessonRouter.get("/", verifyJWT, lessonController.renderHomepage);
 lessonRouter.get("/create", verifyJWT, lessonController.renderCreation);
 lessonRouter.get("/lessons/:subject", verifyJWT, lessonController.renderSubject);
+lessonRouter.get("/view/:lessonId", verifyJWT, lessonController.renderLesson);
 
-lessonRouter.post("/api/lessons", lessonController.getLessons);
-// lessonRouter.post("/api/signup", lessonController.registerUser);
+lessonRouter.post("/api/lessons", verifyJWT, lessonController.getLessons);
+lessonRouter.post("/api/create", verifyJWT, lessonController.createLesson);
 
 
 export default lessonRouter;

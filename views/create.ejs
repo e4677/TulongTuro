@@ -9,5 +9,60 @@
 </head>
 <body>
   Create Lesson
+
+  <div class="form">
+    <div class="field">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" placeholder="Title">
+    </div>
+    <div class="field">
+      <label for="content">Content</label>
+      <input type="text" name="content" id="content" placeholder="Content">
+    </div>
+    <div class="field">
+      <label for="subject">Subject</label>
+      <input type="text" name="subject" id="subject" placeholder="Subject">
+    </div>
+    <button onclick="submit()">Create</button>
+  </div>
+
+  <script>
+    async function submit() {
+      // TK: adjust data
+      const titleElement = document.querySelector('#title');
+      const contentElement = document.querySelector('#content');
+      const subjectElement = document.querySelector('#subject');
+
+      const authorId = '<%= user.userId %>';
+      const subjectSlug = subjectElement.value;
+      const title = titleElement.value;
+      const content = contentElement.value;
+
+      try {
+        const res = await fetch("/api/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ 
+            authorId, subjectSlug, title, content
+          })
+        });
+  
+        const result = await res.json();
+  
+        if (res.ok) {
+          window.location.href = result.redirect;
+        } else {
+          alert(result.message || "Could not create lesson.");
+        }
+  
+      } catch (err) {
+        console.error("Login error:", err);
+        alert("An unexpected error occurred.");
+      }
+    }
+
+  </script>
 </body>
 </html>
