@@ -15,7 +15,6 @@ export const createLesson = async (req, res) => {
 };
 
 export const renderSubject = async (req, res) => {
-  // TK: to be replaced with actual subject title
   const subjectSlug = req.params.subject;
   const subjectTitle = subjectSlug
     .split('-')
@@ -29,3 +28,13 @@ export const getLessons = async (req, res) => {
 
 };
 
+export const renderLesson = async (req, res) => {
+  const lessonId = req.params.lessonId;
+  const lessonTitle = "UML Diagrams"; // TK: replace with actual lesson title
+
+  res.render('lesson', { lessonId, lessonTitle });
+};
+
+export const getLessonContent = async (req, res) => {
+
+};
