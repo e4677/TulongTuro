@@ -71,6 +71,26 @@ export const registerUser = async (req, res) => {
       return res.status(400).json({ message: error.message });
     }
 
+    const userId = data.user.id;
+    {
+      const { data, error } = await supabase
+        .from('users')
+        .insert([
+          { 
+            id: userId,
+            email: email,
+            username: username,
+            first_name: firstName,
+            last_name: lastName,
+          },
+        ])
+        .select();
+
+      if (error) {
+        return res.status(400).json({ message: error.message });
+      }
+    }
+
     const token = generateToken(data.user);
 
     res.cookie('auth_token', token, {
