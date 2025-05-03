@@ -5,9 +5,11 @@ import { verifyJWT } from "../config/jwtUtils.js";
 const lessonRouter = express.Router();
 
 lessonRouter.get("/", verifyJWT, lessonController.renderHomepage);
-lessonRouter.get("/create", lessonController.renderCreation);
+lessonRouter.get("/create", verifyJWT, lessonController.renderCreation);
+lessonRouter.get("/lessons/:subject", verifyJWT, lessonController.renderSubject);
 
 lessonRouter.post("/api/lessons", lessonController.getLessons);
 // lessonRouter.post("/api/signup", lessonController.registerUser);
+
 
 export default lessonRouter;
