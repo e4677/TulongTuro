@@ -43,13 +43,39 @@ export const createLesson = async (req, res) => {
 
 export const renderSubject = async (req, res) => {
   const subjectSlug = req.params.subject;
+
   const subjectTitle = subjectSlug
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 
-  res.render('subject', { subjectTitle });
+  try {
+    const { data: lessons, error } = await supabase
+      .from('lessons')
+      .select("*, users(*)")
+      .eq('subject_slug', subjectSlug); 
+
+    if (error) {
+      console.error("Error fetching lessons:", error.message);
+      return res.status(500).render('error', { message: "Failed to load lessons. Please try again later." });
+    }
+
+    if (!lessons || lessons.length === 0) {
+      return res.status(404).render('subject', {
+        subjectTitle,
+        lessons: [],
+        message: "No lessons found for this subject."
+      });
+    }
+
+    res.render('subject', { subjectTitle, lessons });
+
+  } catch (err) {
+    console.error("Unexpected error:", err);
+    res.status(500).render('error', { message: "An unexpected error occurred. Please try again later." });
+  }
 };
+
 
 export const getLessons = async (req, res) => {
 
