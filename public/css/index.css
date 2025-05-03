@@ -1,2 +1,40 @@
-@import 'global.css';
+@import "global.css";
 
+.homepage-main {
+	grid-area: main;
+	padding: var(--spacing-3);
+}
+
+.greeting {
+	margin-bottom: var(--spacing-2);
+}
+
+.subjects-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20px, 280px));
+	gap: var(--spacing-1);
+}
+
+.sub {
+	width: 280px;
+	aspect-ratio: 16 / 9;
+	border-radius: var(--rounded-sm);
+	padding: var(--spacing-1);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sub:nth-child(4n + 1) {
+	background: linear-gradient(var(--clr-card-1));
+}
+
+.sub:nth-child(4n + 2) {
+	background: linear-gradient(var(--clr-card-2));
+}
+.sub:nth-child(4n + 3) {
+	background: linear-gradient(var(--clr-card-3));
+}
+.sub:nth-child(4n) {
+	background: linear-gradient(var(--clr-card-4));
+}

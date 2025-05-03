@@ -1,9 +1,188 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+/* Variables */
+:root {
+	/* Colors */
+	--clr-bg: #14182e;
+	--clr-txt: #fcfeff;
+	--clr-neutral: #2c3239;
+
+	/* Card Colors */
+	--clr-card-1: #e83f94, #a3135b;
+	--clr-card-2: #3f69e8, #2113a3;
+	--clr-card-3: #e8ad3f, #8b6811;
+	--clr-card-4: #7b3bc9, #5a0479;
+
+	/* Font Sizes */
+	--font-sm: 0.875rem;
+	--font-base: 1rem;
+	--font-lg: 1.25rem;
+	--font-xl: 2rem;
+
+	/* Font Weight */
+	--font-normal: 400;
+	--font-bold: 700;
+
+	/* Font Styles */
+	--font-300: var(--font-normal) var(--font-sm) "Poppins", sans-serif;
+	--font-400: var(--font-normal) var(--font-base) "Poppins", sans-serif;
+	--font-500: var(--font-bold) var(--font-lg) "Poppins", sans-serif;
+	--font-700: var(--font-bold) var(--font-xl) "Poppins", sans-serif;
+
+	/* Spacing */
+	--spacing-05: 8px;
+	--spacing-1: 16px;
+	--spacing-2: 32px;
+	--spacing-3: 48px;
+
+	/* Border Radius */
+	--rounded-sm: 10px;
 }
 
-body {
+/* CSS Resets */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
 
+* {
+	margin: 0;
+	padding: 0;
+	font: inherit;
+}
+
+html {
+	color-scheme: dark light;
+}
+
+/* Layout & Styles*/
+body {
+	min-height: 100vh;
+	font: var(--font-400);
+	background-color: var(--clr-bg);
+	color: var(--clr-txt);
+
+	display: grid;
+	grid-template-areas:
+		"header header header"
+		"sidebar main main"
+		"sidebar main main";
+	grid-template-rows: 80px 1fr 1fr;
+	grid-template-columns: 320px 1fr 1fr;
+}
+
+header {
+	grid-area: header;
+}
+
+.header-nav {
+	padding-inline: var(--spacing-2);
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px solid var(--clr-neutral);
+}
+
+h1 {
+	font: var(--font-500);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--spacing-05);
+}
+
+.menu-and-logo-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--spacing-1);
+}
+
+.add-and-acc-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--spacing-2);
+}
+
+/* Delete this later (acc icon) */
+.account-wrapper {
+	width: 35px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background-color: var(--clr-txt);
+}
+
+aside {
+	grid-area: sidebar;
+
+	/* make this width reponsive if the sidebar closes and opens */
+	/* width: 320px; */
+
+	border-right: 2px solid var(--clr-neutral);
+	padding: var(--spacing-2);
+}
+
+h2 {
+	font: var(--font-500);
+}
+
+ul {
+	margin-top: var(--spacing-1);
+	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: var(--spacing-2);
+}
+
+li {
+	position: relative;
+	margin-left: var(--spacing-2);
+}
+
+li::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -35px;
+	border-radius: 50%;
+	width: 25px;
+	aspect-ratio: 1;
+}
+
+li:nth-child(4n + 1)::before {
+	background: linear-gradient(var(--clr-card-1));
+}
+
+li:nth-child(4n + 2)::before {
+	background: linear-gradient(var(--clr-card-2));
+}
+
+li:nth-child(4n + 3)::before {
+	background: linear-gradient(var(--clr-card-3));
+}
+
+li:nth-child(4n)::before {
+	background: linear-gradient(var(--clr-card-4));
 }

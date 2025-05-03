@@ -1,13 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Tulong-Turo</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Home | Tulong-Turo</title>
 
-  <link rel="stylesheet" href="/css/index.css">
-</head>
-<body>
-  Welcome <%= user.firstName %> 
-</body>
+		<!-- Icons -->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@1&ROND@100&icon_names=add,chevron_right,close,home,menu&display=block" />
+
+		<link rel="stylesheet" href="/css/index.css" />
+	</head>
+	<body>
+		<!-- Welcome <%= user.firstName %> -->
+		<!-- Header -->
+		<header>
+			<nav class="header-nav">
+				<div class="menu-and-logo-wrapper">
+					<!-- hamburger icon -->
+					<button class="menu-button">
+						<span class="material-symbols-outlined"> menu </span>
+					</button>
+
+					<!-- Logo -->
+					<h1>
+						<a href=""> Tulong Turo </a>
+					</h1>
+				</div>
+
+				<!-- Add subj button -->
+				<div class="add-and-acc-wrapper">
+					<button class="add-subject-button">
+						Add subjects
+						<span class="material-symbols-outlined"> add </span>
+					</button>
+
+					<!-- acc icon -->
+					<div class="account-wrapper"> </div>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Sidebar -->
+		<aside class="">
+			<nav class="sidebar-nav">
+				<h2>Subjects</h2>
+
+				<!-- Subjects List (make this list dynamic for subjects )-->
+				<ul class="subjects-list" role="list">
+					<li><a>Software Engineering</a></li>
+					<li><a>Programming Languages</a></li>
+					<li><a>Life and Works of Rizal</a></li>
+					<li><a>Symbolic Logic</a></li>
+					<li><a>Professional Elective</a></li>
+					<li><a>Computer Architecture</a></li>
+					<li><a>Modeling and Simulation</a></li>
+				</ul>
+			</nav>
+		</aside>
+
+		<!-- Main -->
+		<main class="homepage-main">
+			<!-- make greeting dynamic based on time and username -->
+			<h2 class="greeting">Good morning, Timothy</h2>
+
+			<!-- Subjects grid (make this grid dynamic for subjects) -->
+			<div class="subjects-grid">
+				<a class="sub">Software Engineering</a>
+				<a class="sub">Programming Languages</a>
+				<a class="sub">Life and Works of Rizal</a>
+				<a class="sub">Symbolic Logic</a>
+				<a class="sub">Professional Elective</a>
+				<a class="sub">Computer Architecture</a>
+				<a class="sub">Modeling and Simulation</a>
+			</div>
+		</main>
+	</body>
 </html>
