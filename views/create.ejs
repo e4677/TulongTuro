@@ -9,5 +9,41 @@
 </head>
 <body>
   Create Lesson
+
+  <script>
+    async function submit() {
+      // TK: use actual form data
+      const authorId = '<%= user.userId %>';
+      const subjectSlug = 'software-engineering';
+      const title = 'Coding principles';
+      const content = 'sample sample';
+
+      try {
+        const res = await fetch("/api/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ 
+            authorId, subjectSlug, title, content
+          })
+        });
+  
+        const result = await res.json();
+  
+        if (res.ok) {
+          window.location.href = result.redirect;
+        } else {
+          alert(result.message || "Could not create lesson.");
+        }
+  
+      } catch (err) {
+        console.error("Login error:", err);
+        alert("An unexpected error occurred.");
+      }
+    }
+
+    // submit();
+  </script>
 </body>
 </html>
