@@ -1,25 +1,55 @@
 import supabase from '../config/supabaseClient.js';
 
 export const sendMessage = async (req, res) => {
-  const { roomId, content } = req.body;
+  const roomId = req.params.roomId;
+  const content = req.body.content;
   const senderId = req.user.userId;
 
-  const { data, error } = await supabase
-    .from('messages')
-    .insert([
-      { 
-        room_id: roomId,
-        sender_id: senderId,
-        content: content,
-      },
-    ])
-    .select();
+  if (!content || content.trim() === '') {
+    return res.status(400).json({ error: 'Message content cannot be empty' });
+  }
 
-  console.log(data, error);
+  try {
+    const { data, error } = await supabase
+      .from('messages')
+      .insert([
+        {
+          room_id: roomId,
+          sender_id: senderId,
+          content: content.trim(),
+        },
+      ])
+      .select();
+
+    if (error) throw error;
+
+    return res.status(201).json({ message: 'Message sent successfully', data });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
 };
+
 
 export const getMessages = async (req, res) => {
   const roomId = req.params.roomId;
 
-  console.log(req.user)
+  if (!roomId) {
+    return res.status(400).json({ error: 'Missing room ID' });
+  }
+
+  try {
+    const { data: messages, error } = await supabase
+      .from('messages')
+      .select('*, users(*)')
+      .eq('room_id', roomId)
+      .order('created_at', { ascending: true });
+
+    if (error) {
+      return res.status(500).json({ error: error.message });
+    }
+
+    return res.status(200).json(messages);
+  } catch (err) {
+    return res.status(500).json({ error: 'Server error', details: err.message });
+  }
 };
