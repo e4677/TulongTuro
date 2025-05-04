@@ -1,0 +1,15 @@
+<aside class="">
+  <nav class="sidebar-nav">
+    <h2>Subjects</h2>
+
+    <ul class="sidebar-subjects-list" role="list">
+      <% for (let i = 0; i < subjects.length; i++) { %>
+      <li class="sidebar-subject-item"
+        ><a class="subject-link" href="/lessons/<%- subjects[i].slug %>"
+          ><%- subjects[i].title %></a
+        ></li
+      >
+      <% } %>
+    </ul>
+  </nav>
+</aside>

@@ -1,33 +1,18 @@
 import supabase from '../config/supabaseClient.js';
 import { marked } from 'marked';
+import { getUniqueSubjects } from './commonController.js';
 
 export const renderHomepage = async (req, res) => {
   try {
-    const { data, error } = await supabase.rpc('get_unique_subjects');
+    const subjects = await getUniqueSubjects();
 
-    if (error) {
-      console.error('Error fetching unique subjects:', error.message);
-      return res.status(500).render('error', {
-        message: 'Failed to load homepage subjects. Please try again later.'
-      });
-    }
-
-    if (!data || data.length === 0) {
+    if (!subjects || subjects.length === 0) {
       return res.status(404).render('index', {
         user: req.user,
         subjects: [],
         message: 'No subjects found.'
       });
     }
-
-    const subjects = data.map(({ subject_slug: slug }) => {
-      const title = slug
-        .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-
-      return { slug, title };
-    });
 
     res.render('index', { user: req.user, subjects });
 
@@ -104,7 +89,8 @@ export const renderSubject = async (req, res) => {
       });
     }
 
-    res.render('subject', { subjectTitle, lessons });
+    const subjects = await getUniqueSubjects();
+    res.render('subject', { subjectTitle, lessons, subjects });
 
   } catch (err) {
     console.error("Unexpected error:", err);
@@ -148,7 +134,9 @@ export const renderLesson = async (req, res) => {
     .join(' ');
 
   const content = marked(lesson.content);
-  res.render('lesson', { lesson, content, subjectTitle, subjectSlug });
+  const subjects =  await getUniqueSubjects();
+
+  res.render('lesson', { lesson, content, subjectTitle, subjectSlug, subjects });
 };
 
 export const getLessonContent = async (req, res) => {
