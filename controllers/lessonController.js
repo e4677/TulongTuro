@@ -148,7 +148,7 @@ export const renderLesson = async (req, res) => {
     .join(' ');
 
   const content = marked(lesson.content);
-  res.render('lesson', { lesson, content, subjectTitle });
+  res.render('lesson', { lesson, content, subjectTitle, subjectSlug });
 };
 
 export const getLessonContent = async (req, res) => {
