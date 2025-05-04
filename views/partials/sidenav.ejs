@@ -1,15 +1,18 @@
-<aside class="">
-  <nav class="sidebar-nav">
-    <h2>Subjects</h2>
+<aside class="sidebar">
+	<nav class="sidebar-nav">
+		<h2 class="sidebar-title">
+			<span class="material-symbols-outlined"> school </span>
+			Subjects
+		</h2>
 
-    <ul class="sidebar-subjects-list" role="list">
-      <% for (let i = 0; i < subjects.length; i++) { %>
-      <li class="sidebar-subject-item"
-        ><a class="subject-link" href="/lessons/<%- subjects[i].slug %>"
-          ><%- subjects[i].title %></a
-        ></li
-      >
-      <% } %>
-    </ul>
-  </nav>
+		<ul class="sidebar-subjects-list" role="list">
+			<% for (let i = 0; i < subjects.length; i++) { %>
+			<li class="sidebar-subject-item"
+				><a class="subject-link" href="/lessons/<%- subjects[i].slug %>"
+					><%- subjects[i].title %></a
+				></li
+			>
+			<% } %>
+		</ul>
+	</nav>
 </aside>
