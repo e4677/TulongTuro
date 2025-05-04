@@ -30,7 +30,8 @@ export const getSubjects = async (req, res) => {
 };
 
 export const renderCreation = async (req, res) => {
-  res.render('create', { user: req.user });
+  const subjects = await getUniqueSubjects();
+  res.render('create', { user: req.user, subjects });
 };
 
 export const createLesson = async (req, res) => {
