@@ -1,1 +1,78 @@
-@import 'global.css';
+@import "global.css";
+
+.subject-title {
+	font: var(--font-400);
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.back-link:hover .back-text {
+	text-decoration: underline;
+}
+
+.lesson-main {
+	grid-area: main;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: var(--spacing-1);
+	padding-top: var(--spacing-3);
+}
+
+.lesson-title-card {
+	font: var(--font-700);
+	width: min(900px, 100% - 2rem);
+	aspect-ratio: 3.5 / 1;
+	border-radius: var(--rounded-sm);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: var(--spacing-1) var(--spacing-2);
+	background-color: var(--clr-neutral);
+}
+
+.title-author-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: centeGr;
+}
+
+.back-link {
+	font: var(--font-400);
+	color: var(--clr-txt-dark);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.lesson-author {
+	color: var(--clr-txt-dark);
+	font: var(--font-400);
+}
+
+.floating-chat-bubble {
+	position: fixed;
+	bottom: 40px;
+	right: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--spacing-1);
+}
+
+.floating-chat-bubble:hover p {
+	text-decoration: underline;
+}
+
+.chat-bubble {
+	font-size: var(--font-xl);
+}
+
+.lesson-content {
+	width: min(900px, 100% - 2rem);
+}

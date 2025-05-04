@@ -25,7 +25,7 @@
 
 					<!-- Logo -->
 					<h1>
-						<a href="/"> Tulong Turo </a>
+						<a class="logo" href="/"> Tulong Turo </a>
 					</h1>
 				</div>
 
@@ -50,7 +50,7 @@
 				<ul class="sidebar-subjects-list" role="list">
 					<% for (let i = 0; i < subjects.length; i++) { %>
 					<li class="sidebar-subject-item"
-						><a href="/lessons/<%- subjects[i].slug %>"
+						><a class="subject-link" href="/lessons/<%- subjects[i].slug %>"
 							><%- subjects[i].title %></a
 						></li
 					>

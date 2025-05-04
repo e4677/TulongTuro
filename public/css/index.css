@@ -23,6 +23,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .sub:nth-child(4n + 1) {
