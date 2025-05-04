@@ -4,6 +4,7 @@
 :root {
 	/* Colors */
 	--clr-bg: #14182e;
+	--clr-fg: #171c35;
 	--clr-txt: #fcfeff;
 	--clr-txt-dark: #acafb0;
 	--clr-neutral: #2c3239;
@@ -59,7 +60,7 @@ html {
 }
 
 /* Layout & Styles*/
-body {
+:is(body) {
 	min-height: 100vh;
 	font: var(--font-400);
 	background-color: var(--clr-bg);
