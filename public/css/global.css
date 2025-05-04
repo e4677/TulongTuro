@@ -4,6 +4,7 @@
 :root {
 	/* Colors */
 	--clr-bg: #14182e;
+	--clr-fg: #171c35;
 	--clr-txt: #fcfeff;
 	--clr-txt-dark: #acafb0;
 	--clr-neutral: #2c3239;
@@ -33,6 +34,7 @@
 	/* Spacing */
 	--spacing-05: 8px;
 	--spacing-1: 16px;
+	--spacing-1-5: 20px;
 	--spacing-2: 32px;
 	--spacing-3: 48px;
 
@@ -58,7 +60,7 @@ html {
 }
 
 /* Layout & Styles*/
-body {
+:is(body) {
 	min-height: 100vh;
 	font: var(--font-400);
 	background-color: var(--clr-bg);
@@ -71,14 +73,22 @@ body {
 		"sidebar main main";
 	grid-template-rows: 80px 1fr 1fr;
 	grid-template-columns: 320px 1fr 1fr;
+	transition: grid-template-columns 0.3s ease;
 }
 
 header {
 	grid-area: header;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 80px;
+	z-index: 10;
+	background-color: var(--clr-bg);
 }
 
 .header-nav {
-	padding-inline: var(--spacing-2);
+	padding-inline: var(--spacing-1-5);
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -97,10 +107,6 @@ h1 {
 :is(a) {
 	color: inherit;
 	text-decoration: none;
-	cursor: pointer;
-}
-
-.sidebar-subject-item {
 	cursor: pointer;
 }
 
@@ -144,16 +150,31 @@ h1 {
 
 aside {
 	grid-area: sidebar;
-
-	/* make this width reponsive if the sidebar closes and opens */
-	/* width: 320px; */
-
+	position: sticky;
+	top: 80px;
+	overflow-x: hidden;
+	white-space: nowrap;
+	background-color: var(--clr-bg);
+	height: calc(100vh - 80px);
+	z-index: 5;
 	border-right: 2px solid var(--clr-neutral);
-	padding: var(--spacing-2);
+	padding: var(--spacing-2) var(--spacing-1-5);
 }
 
-:is(h2) {
+body.sidebar-closed {
+	grid-template-columns: 62px 1fr 1fr;
+}
+
+.greeting {
 	font: var(--font-500);
+}
+
+.sidebar-title {
+	font: var(--font-500);
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-1);
+	margin-bottom: var(--spacing-2);
 }
 
 ul {
@@ -172,17 +193,19 @@ ul {
 .sidebar-subject-item {
 	position: relative;
 	margin-left: var(--spacing-2);
+	cursor: pointer;
 }
 
 .sidebar-subject-item > a {
 	display: inline-block;
+	margin-left: var(--spacing-05);
 }
 
 .sidebar-subject-item::before {
 	content: "";
 	position: absolute;
 	top: 0;
-	left: -35px;
+	left: -32.5px;
 	border-radius: 50%;
 	width: 25px;
 	aspect-ratio: 1;

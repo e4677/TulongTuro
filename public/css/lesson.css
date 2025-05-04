@@ -76,3 +76,41 @@
 .lesson-content {
 	width: min(900px, 100% - 2rem);
 }
+
+.lesson-content > *:not(hr) {
+	text-wrap: pretty;
+	padding: var(--spacing-05) var(--spacing-1);
+}
+
+.lesson-content > hr {
+	margin: var(--spacing-1-5);
+}
+
+.lesson-content > ul {
+	list-style-type: disc;
+	margin-left: var(--spacing-2);
+}
+
+.lesson-content > ol {
+	margin-left: var(--spacing-2);
+}
+
+.lesson-content > h1 {
+	font: var(--font-700);
+	text-align: center;
+}
+
+.lesson-content > h2 {
+	font: var(--font-500);
+}
+
+.lesson-content > h3 {
+	font-weight: var(--font-bold);
+	margin-top: var(--spacing-1);
+	margin-bottom: -16px;
+}
+
+.lesson-content > pre {
+	background-color: var(--clr-neutral);
+	margin-inline: var(--spacing-1);
+}
