@@ -13,8 +13,8 @@
 				<% if (typeof subjectTitle !== 'undefined' && typeof subjectSlug !==
 				'undefined') { %>
 				<span class="material-symbols-outlined"> chevron_right </span>
-				<a class="subject-title" href="/lessons/<%- subjectSlug %>"
-					><%= subjectTitle %></a
+				<a class="subject-title" href="/lessons/<%- subjectSlug || '' %>"
+					><%= subjectTitle || 'Untitled Subject' %></a
 				>
 				<% } %>
 			</h1>
