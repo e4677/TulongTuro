@@ -1,0 +1,34 @@
+<header>
+	<nav class="header-nav">
+		<div class="menu-and-logo-wrapper">
+			<!-- hamburger icon -->
+			<button id="toggleButton" class="menu-button">
+				<span class="material-symbols-outlined"> menu </span>
+			</button>
+
+			<!-- Logo -->
+			<h1>
+				<a class="logo" href="/"> Tulong Turo </a>
+
+				<% if (typeof subjectTitle !== 'undefined' && typeof subjectSlug !==
+				'undefined') { %>
+				<span class="material-symbols-outlined"> chevron_right </span>
+				<a class="subject-title" href="/lessons/<%- subjectSlug || '' %>"
+					><%= subjectTitle || 'Untitled Subject' %></a
+				>
+				<% } %>
+			</h1>
+		</div>
+
+		<!-- Add subj button -->
+		<div class="add-and-acc-wrapper">
+			<button class="add-subject-button">
+				Add subjects
+				<span class="material-symbols-outlined"> add </span>
+			</button>
+
+			<!-- acc icon -->
+			<div class="account-wrapper"> </div>
+		</div>
+	</nav>
+</header>

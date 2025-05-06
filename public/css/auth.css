@@ -65,14 +65,14 @@
 
 .auth__input:focus + label,
 .auth__input:not(:placeholder-shown) + label {
-	top: -10px;
+	top: -12px;
 	font-size: var(--font-sm);
 	color: var(--clr-txt);
 	background: linear-gradient(var(--clr-bg), var(--clr-fg));
 }
 
 .auth__input:focus {
-	outline: 2px solid var(--clr-neutral);
+	outline: 2px solid var(--clr-txt);
 }
 
 .auth__button {

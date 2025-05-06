@@ -11,36 +11,9 @@
 		<link rel="stylesheet" href="/css/subject.css" />
 	</head>
 	<body>
-		<header>
-			<nav class="header-nav">
-				<div class="menu-and-logo-wrapper">
-					<!-- hamburger icon -->
-					<button id="toggleButton" class="menu-button">
-						<span class="material-symbols-outlined"> menu </span>
-					</button>
-
-					<!-- Logo -->
-					<h1>
-						<a href="/"> Tulong Turo </a>
-
-						<!-- Dynamic subject title -->
-						<span class="material-symbols-outlined"> chevron_right </span>
-						<a class="subject-title" href=""><%= subjectTitle %></a>
-					</h1>
-				</div>
-
-				<!-- Add subj button -->
-				<div class="add-and-acc-wrapper">
-					<button class="add-subject-button">
-						Add subjects
-						<span class="material-symbols-outlined"> add </span>
-					</button>
-
-					<!-- acc icon -->
-					<div class="account-wrapper"> </div>
-				</div>
-			</nav>
-		</header>
+		<!-- Header -->
+		<%- include('partials/header', { subjectTitle: subjectTitle, subjectSlug:
+		subjectSlug }) %>
 
 		<!-- Sidebar -->
 		<%- include('partials/sidenav.ejs') %>
