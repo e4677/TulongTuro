@@ -7,5 +7,11 @@
 </head>
 <body>
   Add Subjects
+
+  <form>
+    <% for (let i = 0; i < subjects.length; i++) { %>
+      <label><input <%= subjects[i].isSubscribed ? "checked" : "" %> type="checkbox" name="interests" value="<%= subjects[i].slug %>"> <%= subjects[i].title %></label><br>
+    <% } %>
+  </form>
 </body>
 </html>
