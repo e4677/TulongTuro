@@ -1,76 +1,103 @@
 @import "global.css";
 
 .create__main {
-	grid-area: main;
-	padding: var(--spacing-3);
+  grid-area: main;
+  padding: var(--spacing-2);
 }
 
 .create__form {
-	padding: var(--spacing-2);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: var(--spacing-1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-1);
 }
 
 .create__title {
-	font: var(--font-700);
+  font: var(--font-700);
 }
 
 .create__field {
-	position: relative;
+  position: relative;
 }
 
 .create__icon {
-	position: absolute;
-	left: 10px;
-	top: 18px;
-	font-size: var(--font-lg);
+  position: absolute;
+  left: 10px;
+  top: 18px;
+  font-size: var(--font-lg);
 }
 
 .create__input {
-	width: 100%;
-	min-width: 370px;
-	background-color: var(--clr-fg);
-	border: none;
-	padding: var(--spacing-1) 36px;
-	border-radius: var(--rounded-sm);
+  width: var(--width-md);
+  background-color: var(--clr-fg);
+  border: none;
+  padding: var(--spacing-1) 36px;
+  border-radius: var(--rounded-sm);
 }
 
 .create__label {
-	position: absolute;
-	left: 36px;
-	top: 16px;
-	color: var(--clr-txt-dark);
-	pointer-events: none;
-	transition: 0.2s ease all;
+  position: absolute;
+  left: 36px;
+  top: 16px;
+  color: var(--clr-txt-dark);
+  pointer-events: none;
+  transition: 0.2s ease all;
 }
 
 .create__input:focus + label,
 .create__input:not(:placeholder-shown) + label {
-	top: -12px;
-	font-size: var(--font-sm);
-	color: var(--clr-txt);
-	background: linear-gradient(var(--clr-bg), var(--clr-fg));
+  top: -12px;
+  font-size: var(--font-sm);
+  color: var(--clr-txt);
+  background: linear-gradient(var(--clr-bg), var(--clr-fg));
 }
 
 .create__input:focus {
-	outline: 2px solid var(--clr-txt);
+  outline: 2px solid var(--clr-txt);
 }
 
 .EasyMDEContainer .editor-toolbar {
-	border: none;
+  border: none;
+  color: var(--clr-txt-dark);
+  transition: color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-05);
+}
+
+.EasyMDEContainer .editor-toolbar > .separator {
+  display: none;
+}
+
+.EasyMDEContainer .editor-toolbar > button:hover {
+  color: var(--clr-txt);
+  background: none;
+  outline: 0;
+  border: 0;
 }
 
 .EasyMDEContainer .CodeMirror {
-	background-color: var(--clr-fg);
-	border-radius: var(--rounded-sm) !important;
+  background-color: var(--clr-fg);
+  border: 0 !important;
+  border-radius: var(--rounded-sm) !important;
+  caret-color: var(--clr-txt);
+  width: var(--width-md);
+  margin-inline: auto;
+}
+
+.EasyMDEContainer .CodeMirror-scroll {
+  color: var(--clr-txt);
+}
+
+.EasyMDEContainer .editor-statusbar {
+  display: none;
 }
 
 .create__button {
-	min-width: 370px;
-	transition: 0.3s ease all;
-	border-radius: var(--rounded-sm);
-	padding: var(--spacing-1);
-	background: var(--clr-fg);
+  width: var(--width-md);
+  transition: 0.3s ease all;
+  border-radius: var(--rounded-sm);
+  padding: var(--spacing-1);
+  background: var(--clr-fg);
 }

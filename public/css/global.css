@@ -46,6 +46,9 @@
   --rounded-sm: 10px;
   --rounded-md: 20px;
   --rounded-full: 50%;
+
+  /* Widths */
+  --width-md: 480px;
 }
 
 /* CSS Resets */
