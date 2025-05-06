@@ -32,6 +32,8 @@ export const sendMessage = async (req, res) => {
 
 export const getMessages = async (req, res) => {
   const roomId = req.params.roomId;
+  const lastTimestamp = req.query.timestamp;
+  const date = new Date(parseInt(lastTimestamp) + 1);
 
   if (!roomId) {
     return res.status(400).json({ error: 'Missing room ID' });
@@ -42,6 +44,7 @@ export const getMessages = async (req, res) => {
       .from('messages')
       .select('*, users(*)')
       .eq('room_id', roomId)
+      .gt('created_at', date.toISOString())
       .order('created_at', { ascending: true });
 
     if (error) {

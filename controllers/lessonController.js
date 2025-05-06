@@ -170,6 +170,7 @@ export const renderLesson = async (req, res) => {
 		subjectTitle,
 		subjectSlug,
 		subjects,
+		user: req.user,
 	});
 };
 

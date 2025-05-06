@@ -51,7 +51,7 @@
           <div class="lesson__chat-acc-icon"></div>
 
           <!-- Account name here-->
-          <div class="lesson__chat-acc-name">Fatima Marie</div>
+          <div class="lesson__chat-acc-name">Discuss with Others</div>
         </div>
         <button
           id="close-button"
@@ -62,36 +62,7 @@
       </div>
 
       <div class="lesson__chat-display">
-        <!-- Receiver -->
-        <div class="lesson__chat-message lesson__chat-message--receiver">
-          <div class="lesson__chat-name lesson__chat-name--receiver">
-            Fatima Marie
-          </div>
-          <div class="lesson__chat-message-text">
-            <p>Hi! How can I help you?</p>
-          </div>
-          <div class="lesson__chat-message-time">10:00 AM</div>
-        </div>
 
-        <!-- Sender -->
-        <div class="lesson__chat-message lesson__chat-message--sender">
-          <div class="lesson__chat-name lesson__chat-name--sender">You</div>
-          <div class="lesson__chat-message-text">
-            <p>Can you explain the lesson to me?</p>
-          </div>
-          <div class="lesson__chat-message-time">10:01 AM</div>
-        </div>
-
-        <!-- Receiver -->
-        <div class="lesson__chat-message lesson__chat-message--receiver">
-          <div class="lesson__chat-name lesson__chat-name--receiver">
-            Fatima Marie
-          </div>
-          <div class="lesson__chat-message-text">
-            <p>Sure! What part do you need help with?</p>
-          </div>
-          <div class="lesson__chat-message-time">10:02 AM</div>
-        </div>
       </div>
 
       <div class="lesson__chat-input-wrapper">
@@ -99,12 +70,124 @@
           type="text"
           class="lesson__chat-input"
           placeholder="Type a message..."
+          id="chat-input"
           required
         />
-        <button class="material-symbols-outlined lesson__send-button">
+        <button class="material-symbols-outlined lesson__send-button" onclick="startSend()">
           send
         </button>
       </div>
     </div>
+
+    <script>
+      const display = document.querySelector('.lesson__chat-display');
+      const roomId = "<%= lesson.id %>";
+      const userId = '<%= user.userId %>';
+      const chatInput = document.querySelector('#chat-input');
+      let lastTimestamp = new Date(0);
+
+      function prettyTime(timestamp) {
+        const date = new Date(timestamp);
+
+        const options = {
+          hour: 'numeric',
+          minute: '2-digit',
+          hour12: true,
+          timeZone: 'Asia/Manila',
+        };
+
+        const formattedTime = new Intl.DateTimeFormat('en-US', options).format(date);
+        return formattedTime;
+      }
+
+      async function addMessage(name, content, timestamp, isSender) {
+        const type = isSender ? 'sender' : 'receiver';
+        const time = prettyTime(timestamp);
+        const htmlString = `
+          <div class="lesson__chat-message lesson__chat-message--${type}">
+            <div class="lesson__chat-name lesson__chat-name--${type}">
+              ${name}
+            </div>
+            <div class="lesson__chat-message-text">
+              <p>${content}</p>
+            </div>
+            <div class="lesson__chat-message-time">${time}</div>
+          </div>
+        `;
+
+        display.innerHTML += htmlString;
+      }
+
+      async function getMessages() {
+        try {
+          const res = await fetch(`/api/chat/${roomId}?timestamp=${lastTimestamp.getTime()}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          const result = await res.json();
+
+          if (res.ok) {
+            result.forEach((data) => {
+              const content = data.content;
+              const timestamp = data.created_at;
+              const name = data.users.first_name + ' ' + data.users.last_name;
+              const isSender = data.users.id === userId;
+
+              addMessage(name, content, timestamp, isSender);
+              lastTimestamp = new Date(timestamp);
+            });
+          } else {
+            alert(result.message || "Failed to get messages.");
+          }
+        } catch (err) {
+          console.error("Failed to get message:", err);
+          alert("An unexpected error occurred.");
+        }
+      }
+
+      async function startSend() {
+        const content = chatInput.value;
+
+        // TK: add sending indicator
+        await sendMessage(content);
+        await getMessages();
+
+        // TK: update chat
+        chatInput.value = "";
+      }
+
+
+
+      async function sendMessage(content) {
+        try {
+          const res = await fetch(`/api/chat/${roomId}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              content: content
+            }),
+          });
+
+          const result = await res.json();
+
+          if (res.ok) {
+            
+          } else {
+            alert(result.message || "Failed to send message.");
+          }
+        } catch (err) {
+          console.error("Failed to send message:", err);
+          alert("An unexpected error occurred.");
+        } 
+      }
+
+      getMessages();
+      setInterval(getMessages, 3000);
+    </script>
   </body>
 </html>
