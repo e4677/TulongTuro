@@ -112,7 +112,7 @@
               ${name}
             </div>
             <div class="lesson__chat-message-text lesson__chat-message-text--${type}">
-              <p>${content}</p>
+              <p>${content.replace(/\n/g, "<br>")}</p>
             </div>
             <div class="lesson__chat-message-time">${time}</div>
           </div>
@@ -179,6 +179,7 @@
 
         // TK: update chat
         chatInput.value = "";
+        chatInput.style.height = "auto";
       }
 
       async function sendMessage(content) {
