@@ -25,3 +25,22 @@ export const getUniqueSubjects = async () => {
 
   return subjects;
 };
+
+export const getSubscribedSubjects = async (userId) => {
+  let { data: subscriptions, error } = await supabase
+  .from('subscriptions')
+  .select("*")
+  .eq('user_id', userId)
+
+  const subjects = subscriptions.map(sub => {
+    const slug = sub.subject_slug;
+    const title = slug
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+
+    return { slug, title };
+  });
+  
+  return subjects;
+}

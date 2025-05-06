@@ -1,10 +1,23 @@
 import supabase from "../config/supabaseClient.js";
 import { marked } from "marked";
-import { getUniqueSubjects } from "./commonController.js";
+import { getUniqueSubjects, getSubscribedSubjects } from "./commonController.js";
+
+function getGreeting() {
+  const now = new Date();
+  const hour = now.getHours();
+
+  if (hour >= 5 && hour < 12) {
+    return "Good morning";
+  } else if (hour >= 12 && hour < 17) {
+    return "Good afternoon";
+  } else {
+    return "Good evening";
+  }
+}
 
 export const renderHomepage = async (req, res) => {
 	try {
-		const subjects = await getUniqueSubjects();
+		const subjects = await getSubscribedSubjects(req.user.userId);
 
 		if (!subjects || subjects.length === 0) {
 			return res.status(404).render("index", {
@@ -14,7 +27,9 @@ export const renderHomepage = async (req, res) => {
 			});
 		}
 
-		res.render("index", { user: req.user, subjects });
+		const greeting = getGreeting() + ', ' + req.user.firstName;
+
+		res.render("index", { user: req.user, greeting, subjects });
 	} catch (err) {
 		console.error("Unexpected error while rendering homepage:", err);
 		res.status(500).render("error", {
@@ -28,12 +43,17 @@ export const getSubjects = async (req, res) => {
 };
 
 export const renderCreation = async (req, res) => {
-	const subjects = await getUniqueSubjects();
+	const subjects = await getSubscribedSubjects(req.user.userId);
 	res.render("create", { user: req.user, subjects });
 };
 
 export const createLesson = async (req, res) => {
-	const { authorId, title, content, subjectSlug } = req.body;
+	let { authorId, title, content, subjectSlug } = req.body;
+
+	subjectSlug = subjectSlug
+		.split(' ')
+		.map(word => word.toLowerCase())
+		.join('-');
 
 	const { data, error } = await supabase
 		.from("lessons")
@@ -97,7 +117,7 @@ export const renderSubject = async (req, res) => {
 			});
 		}
 
-		const subjects = await getUniqueSubjects();
+		const subjects = await getSubscribedSubjects(req.user.userId);
 		res.render("subject", { subjectTitle, subjectSlug, lessons, subjects });
 	} catch (err) {
 		console.error("Unexpected error:", err);
@@ -142,7 +162,7 @@ export const renderLesson = async (req, res) => {
 		.join(" ");
 
 	const content = marked(lesson.content);
-	const subjects = await getUniqueSubjects();
+	const subjects = await getSubscribedSubjects(req.user.userId);
 
 	res.render("lesson", {
 		lesson,
@@ -151,6 +171,23 @@ export const renderLesson = async (req, res) => {
 		subjectSlug,
 		subjects,
 	});
+};
+
+export const renderSelection = async (req, res) => {
+	const allSubjects = await getUniqueSubjects();
+	const subscribed = await getSubscribedSubjects(req.user.userId);
+
+	const subMap = new Set(subscribed.map(sub => sub.slug));
+
+	const subjects = allSubjects.map(sub => {
+		return {
+			slug: sub.slug,
+			title: sub.title,
+			isSubscribed: subMap.has(sub.slug)
+		}
+	});
+
+	res.render("add", { user: req.user, subjects });
 };
 
 export const getLessonContent = async (req, res) => {};
