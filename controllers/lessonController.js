@@ -2,6 +2,19 @@ import supabase from "../config/supabaseClient.js";
 import { marked } from "marked";
 import { getUniqueSubjects } from "./commonController.js";
 
+function getGreeting() {
+  const now = new Date();
+  const hour = now.getHours();
+
+  if (hour >= 5 && hour < 12) {
+    return "Good morning";
+  } else if (hour >= 12 && hour < 17) {
+    return "Good afternoon";
+  } else {
+    return "Good evening";
+  }
+}
+
 export const renderHomepage = async (req, res) => {
 	try {
 		const subjects = await getUniqueSubjects();
@@ -14,7 +27,9 @@ export const renderHomepage = async (req, res) => {
 			});
 		}
 
-		res.render("index", { user: req.user, subjects });
+		const greeting = getGreeting() + ', ' + req.user.firstName;
+
+		res.render("index", { user: req.user, subjects, greeting });
 	} catch (err) {
 		console.error("Unexpected error while rendering homepage:", err);
 		res.status(500).render("error", {
