@@ -174,7 +174,19 @@ export const renderLesson = async (req, res) => {
 };
 
 export const renderSelection = async (req, res) => {
-	const subjects = getSubscribedSubjects(req.user.userId);
+	const allSubjects = await getUniqueSubjects();
+	const subscribed = await getSubscribedSubjects(req.user.userId);
+
+	const subMap = new Set(subscribed.map(sub => sub.slug));
+
+	const subjects = allSubjects.map(sub => {
+		return {
+			slug: sub.slug,
+			title: sub.title,
+			isSubscribed: subMap.has(sub.slug)
+		}
+	});
+
 	res.render("add", { user: req.user, subjects });
 };
 
