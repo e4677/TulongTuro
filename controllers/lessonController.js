@@ -1,6 +1,6 @@
 import supabase from "../config/supabaseClient.js";
 import { marked } from "marked";
-import { getUniqueSubjects } from "./commonController.js";
+import { getUniqueSubjects, getSubscribedSubjects } from "./commonController.js";
 
 function getGreeting() {
   const now = new Date();
@@ -17,7 +17,7 @@ function getGreeting() {
 
 export const renderHomepage = async (req, res) => {
 	try {
-		const subjects = await getUniqueSubjects();
+		const subjects = await getSubscribedSubjects(req.user.userId);
 
 		if (!subjects || subjects.length === 0) {
 			return res.status(404).render("index", {
@@ -29,7 +29,7 @@ export const renderHomepage = async (req, res) => {
 
 		const greeting = getGreeting() + ', ' + req.user.firstName;
 
-		res.render("index", { user: req.user, subjects, greeting });
+		res.render("index", { user: req.user, greeting, subjects });
 	} catch (err) {
 		console.error("Unexpected error while rendering homepage:", err);
 		res.status(500).render("error", {
@@ -43,7 +43,7 @@ export const getSubjects = async (req, res) => {
 };
 
 export const renderCreation = async (req, res) => {
-	const subjects = await getUniqueSubjects();
+	const subjects = await getSubscribedSubjects(req.user.userId);
 	res.render("create", { user: req.user, subjects });
 };
 
@@ -117,7 +117,7 @@ export const renderSubject = async (req, res) => {
 			});
 		}
 
-		const subjects = await getUniqueSubjects();
+		const subjects = await getSubscribedSubjects(req.user.userId);
 		res.render("subject", { subjectTitle, subjectSlug, lessons, subjects });
 	} catch (err) {
 		console.error("Unexpected error:", err);
@@ -162,7 +162,7 @@ export const renderLesson = async (req, res) => {
 		.join(" ");
 
 	const content = marked(lesson.content);
-	const subjects = await getUniqueSubjects();
+	const subjects = await getSubscribedSubjects(req.user.userId);
 
 	res.render("lesson", {
 		lesson,
@@ -174,7 +174,7 @@ export const renderLesson = async (req, res) => {
 };
 
 export const renderSelection = async (req, res) => {
-	const subjects = getUniqueSubjects();
+	const subjects = getSubscribedSubjects(req.user.userId);
 	res.render("add", { user: req.user, subjects });
 };
 
