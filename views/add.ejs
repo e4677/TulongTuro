@@ -8,10 +8,24 @@
 <body>
   Add Subjects
 
-  <form>
+  <div>
     <% for (let i = 0; i < subjects.length; i++) { %>
-      <label><input <%= subjects[i].isSubscribed ? "checked" : "" %> type="checkbox" name="interests" value="<%= subjects[i].slug %>"> <%= subjects[i].title %></label><br>
+      <label><input <%= subjects[i].isSubscribed ? "checked" : "" %> type="checkbox" name="topics" value="<%= subjects[i].slug %>"> <%= subjects[i].title %></label><br>
     <% } %>
-  </form>
+    <button onclick="submit()">Update</button>
+    </div>
+
+  <script>
+    async function submit() {
+      const allCheckboxes = document.querySelectorAll('input[name="topics"]');
+
+      const results = Array.from(allCheckboxes).map(checkbox => ({
+        slug: checkbox.value,
+        isSubscribed: checkbox.checked
+      }));
+
+       
+    }
+  </script>
 </body>
 </html>
