@@ -235,6 +235,10 @@
 }
 
 .lesson__chat-input {
+  resize: none;
+  overflow: hidden;
+  line-height: 1.5;
+  max-height: 10rem;
   font: var(--font-300);
   border: none;
   width: 100%;
