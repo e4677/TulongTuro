@@ -120,7 +120,10 @@
         `;
 
         display.innerHTML += htmlString;
-        display.scrollTop = display.scrollHeight;
+        display.scrollTo({
+          top: display.scrollHeight,
+          behavior: "smooth",
+        });
       }
 
       async function getMessages() {
