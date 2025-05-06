@@ -167,12 +167,13 @@
   padding: var(--spacing-1);
   display: flex;
   flex-direction: column;
-  row-gap: 1.75rem;
+  gap: 1.75rem;
   overflow-y: auto;
   height: calc(100% - 2.5rem);
-  padding-bottom: var(--spacing-4);
+  margin-bottom: calc(var(--spacing-4) * 1.25);
   font: var(--font-200);
   color: var(--clr-txt-dark);
+  scroll-behavior: smooth;
 }
 
 .lesson__chat-message {
@@ -216,15 +217,16 @@
 .lesson__chat-message--sender > .lesson__chat-message-text {
   background-color: var(--clr-neutral);
   color: var(--clr-txt);
+  align-self: flex-end;
 }
 
 /* input  */
 .lesson__chat-input-wrapper {
   position: absolute;
-  width: calc(100% - var(--spacing-1));
+  width: 100%;
   background-color: var(--clr-bg);
   bottom: 0;
-  right: var(--spacing-05);
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
