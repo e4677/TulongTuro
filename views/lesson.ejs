@@ -61,9 +61,7 @@
         </button>
       </div>
 
-      <div class="lesson__chat-display">
-
-      </div>
+      <div class="lesson__chat-display"></div>
 
       <div class="lesson__chat-input-wrapper">
         <input
@@ -73,42 +71,48 @@
           id="chat-input"
           required
         />
-        <button class="material-symbols-outlined lesson__send-button" onclick="startSend()">
+        <button
+          id="send-button"
+          class="material-symbols-outlined lesson__send-button"
+          onclick="startSend()"
+        >
           send
         </button>
       </div>
     </div>
 
     <script>
-      const display = document.querySelector('.lesson__chat-display');
+      const display = document.querySelector(".lesson__chat-display");
       const roomId = "<%= lesson.id %>";
-      const userId = '<%= user.userId %>';
-      const chatInput = document.querySelector('#chat-input');
+      const userId = "<%= user.userId %>";
+      const chatInput = document.querySelector("#chat-input");
       let lastTimestamp = new Date(0);
 
       function prettyTime(timestamp) {
         const date = new Date(timestamp);
 
         const options = {
-          hour: 'numeric',
-          minute: '2-digit',
+          hour: "numeric",
+          minute: "2-digit",
           hour12: true,
-          timeZone: 'Asia/Manila',
+          timeZone: "Asia/Manila",
         };
 
-        const formattedTime = new Intl.DateTimeFormat('en-US', options).format(date);
+        const formattedTime = new Intl.DateTimeFormat("en-US", options).format(
+          date
+        );
         return formattedTime;
       }
 
       async function addMessage(name, content, timestamp, isSender) {
-        const type = isSender ? 'sender' : 'receiver';
+        const type = isSender ? "sender" : "receiver";
         const time = prettyTime(timestamp);
         const htmlString = `
           <div class="lesson__chat-message lesson__chat-message--${type}">
             <div class="lesson__chat-name lesson__chat-name--${type}">
               ${name}
             </div>
-            <div class="lesson__chat-message-text">
+            <div class="lesson__chat-message-text lesson__chat-message-text--${type}">
               <p>${content}</p>
             </div>
             <div class="lesson__chat-message-time">${time}</div>
@@ -116,16 +120,20 @@
         `;
 
         display.innerHTML += htmlString;
+        display.scrollTop = display.scrollHeight;
       }
 
       async function getMessages() {
         try {
-          const res = await fetch(`/api/chat/${roomId}?timestamp=${lastTimestamp.getTime()}`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
+          const res = await fetch(
+            `/api/chat/${roomId}?timestamp=${lastTimestamp.getTime()}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
 
           const result = await res.json();
 
@@ -133,7 +141,7 @@
             result.forEach((data) => {
               const content = data.content;
               const timestamp = data.created_at;
-              const name = data.users.first_name + ' ' + data.users.last_name;
+              const name = data.users.first_name + " " + data.users.last_name;
               const isSender = data.users.id === userId;
 
               addMessage(name, content, timestamp, isSender);
@@ -148,6 +156,13 @@
         }
       }
 
+      chatInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          startSend();
+        }
+      });
+
       async function startSend() {
         const content = chatInput.value;
 
@@ -159,8 +174,6 @@
         chatInput.value = "";
       }
 
-
-
       async function sendMessage(content) {
         try {
           const res = await fetch(`/api/chat/${roomId}`, {
@@ -169,21 +182,20 @@
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              content: content
+              content: content,
             }),
           });
 
           const result = await res.json();
 
           if (res.ok) {
-            
           } else {
             alert(result.message || "Failed to send message.");
           }
         } catch (err) {
           console.error("Failed to send message:", err);
           alert("An unexpected error occurred.");
-        } 
+        }
       }
 
       getMessages();
