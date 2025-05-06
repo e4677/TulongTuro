@@ -33,7 +33,12 @@ export const renderCreation = async (req, res) => {
 };
 
 export const createLesson = async (req, res) => {
-	const { authorId, title, content, subjectSlug } = req.body;
+	let { authorId, title, content, subjectSlug } = req.body;
+
+	subjectSlug = subjectSlug
+		.split(' ')
+		.map(word => word.toLowerCase())
+		.join('-');
 
 	const { data, error } = await supabase
 		.from("lessons")
