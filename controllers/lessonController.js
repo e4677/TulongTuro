@@ -158,4 +158,9 @@ export const renderLesson = async (req, res) => {
 	});
 };
 
+export const renderSelection = async (req, res) => {
+	const subjects = getUniqueSubjects();
+	res.render("add", { user: req.user, subjects });
+};
+
 export const getLessonContent = async (req, res) => {};
