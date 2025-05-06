@@ -8,6 +8,7 @@
   --clr-txt: #fcfeff;
   --clr-txt-dark: #acafb0;
   --clr-neutral: #2c3239;
+  --clr-red: #be1010;
 
   /* Card Colors */
   --clr-card-1: #e83f94, #a3135b;
@@ -16,6 +17,7 @@
   --clr-card-4: #7b3bc9, #5a0479;
 
   /* Font Sizes */
+  --font-xs: 0.75rem;
   --font-sm: 0.875rem;
   --font-base: 1rem;
   --font-lg: 1.25rem;
@@ -26,6 +28,7 @@
   --font-bold: 700;
 
   /* Font Styles */
+  --font-200: var(--font-normal) var(--font-xs) "Poppins", sans-serif;
   --font-300: var(--font-normal) var(--font-sm) "Poppins", sans-serif;
   --font-400: var(--font-normal) var(--font-base) "Poppins", sans-serif;
   --font-500: var(--font-bold) var(--font-lg) "Poppins", sans-serif;
@@ -37,9 +40,12 @@
   --spacing-1-5: 20px;
   --spacing-2: 32px;
   --spacing-3: 48px;
+  --spacing-4: 64px;
 
   /* Border Radius */
   --rounded-sm: 10px;
+  --rounded-md: 20px;
+  --rounded-full: 50%;
 }
 
 /* CSS Resets */
