@@ -180,7 +180,7 @@ export const renderSelection = async (req, res) => {
 
 	const subMap = new Set(subscribed.map(sub => sub.slug));
 
-	const subjects = allSubjects.map(sub => {
+	const subjectList = allSubjects.map(sub => {
 		return {
 			slug: sub.slug,
 			title: sub.title,
@@ -188,7 +188,7 @@ export const renderSelection = async (req, res) => {
 		}
 	});
 
-	res.render("add", { user: req.user, subjects });
+	res.render("add", { user: req.user, subjectList, subjects: subscribed });
 };
 
 export const updateSubjects = async (req, res) => {
