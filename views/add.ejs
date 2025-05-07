@@ -42,10 +42,31 @@
       async function submit() {
         const allCheckboxes = document.querySelectorAll('input[name="topics"]');
 
-        const results = Array.from(allCheckboxes).map((checkbox) => ({
+        const subjects = Array.from(allCheckboxes).map((checkbox) => ({
           slug: checkbox.value,
           isSubscribed: checkbox.checked,
         }));
+
+        try {
+          const res = await fetch("/api/subjects", {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ subjects }),
+          });
+
+          const result = await res.json();
+
+          if (res.ok) {
+            window.location.href = "/";
+          } else {
+            alert(result.message || "Update subjects failed.");
+          }
+        } catch (err) {
+          console.error("Subject selection error:", err);
+          alert("An unexpected error occurred.");
+        }
       }
     </script>
   </body>
