@@ -1,1 +1,54 @@
 @import "global.css";
+
+.add__main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.add__title {
+  font: var(--font-700);
+}
+
+.add__subjects-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-1);
+}
+
+.add__subjects-list-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-1);
+}
+
+.add__subject-status-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.add__subject-status {
+  font: var(--font-300);
+  color: var(--clr-txt-dark);
+}
+
+.add__update-button {
+  padding: var(--spacing-1) var(--spacing-2);
+  width: 100%;
+  background-color: var(--clr-fg);
+  border-radius: var(--rounded-sm);
+  transition: background-color 0.3s ease;
+}
+
+.add__update-button:hover {
+  background-color: var(--clr-neutral);
+}
