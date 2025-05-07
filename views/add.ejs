@@ -21,16 +21,16 @@
     <main class="add__main">
       <h2 class="add__title">Add subjects</h2>
       <ul class="add__subjects-list">
-        <% for (let i = 0; i < subjects.length; i++) { %>
+        <% for (let i = 0; i < subjectList.length; i++) { %>
         <li class="add__subjects-list-item">
-          <label class="add__subject-label"> <%= subjects[i].title %></label>
+          <label class="add__subject-label"> <%= subjectList[i].title %></label>
 
           <div class="add__subject-status-wrapper">
             <!-- Change this later: status must be dynamically updated -->
             <span class="add__subject-status">Enrolled</span>
 
-            <input <%= subjects[i].isSubscribed ? "checked" : "" %>
-            type="checkbox" name="topics" value="<%= subjects[i].slug %>">
+            <input <%= subjectList[i].isSubscribed ? "checked" : "" %>
+            type="checkbox" name="topics" value="<%= subjectList[i].slug %>">
           </div>
         </li>
         <% } %>
