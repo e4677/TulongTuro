@@ -191,4 +191,59 @@ export const renderSelection = async (req, res) => {
 	res.render("add", { user: req.user, subjects });
 };
 
+export const updateSubjects = async (req, res) => {
+  const { subjects } = req.body;
+  const userId = req.user.userId;
+
+  if (!Array.isArray(subjects) || !userId) {
+    return res.status(400).json({ error: 'Invalid input data.' });
+  }
+
+  const insertRows = subjects.filter((elem) => elem.isSubscribed);
+  const deleteRows = subjects.filter((elem) => !elem.isSubscribed);
+
+  const insertData = insertRows.map((elem) => ({
+    user_id: userId,
+    subject_slug: elem.slug,
+  }));
+
+  const deleteData = deleteRows.map((elem) => ({
+    user_id: userId,
+    subject_slug: elem.slug,
+  }));
+
+  try {
+    // Insert or update subscriptions
+    const { data: insertedData, error: insertError } = await supabase
+      .from('subscriptions')
+      .upsert(insertData)
+      .select();
+
+    if (insertError) {
+      console.error('Insert error:', insertError);
+      return res.status(500).json({ error: 'Failed to subscribe to subjects.' });
+    }
+
+    // Delete unsubscribed entries
+    const { error: deleteError } = await supabase.rpc('delete_subscriptions', {
+      pairs: deleteData,
+    });
+
+    if (deleteError) {
+      console.error('Delete error:', deleteError);
+      return res.status(500).json({ error: 'Failed to unsubscribe from subjects.' });
+    }
+
+    return res.status(200).json({
+      message: 'Subscriptions updated successfully.',
+      inserted: insertedData,
+      deleted: deleteData,
+    });
+
+  } catch (err) {
+    console.error('Unexpected error:', err);
+    return res.status(500).json({ error: 'Internal server error.' });
+  }
+};
+
 export const getLessonContent = async (req, res) => {};
