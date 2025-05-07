@@ -13,5 +13,6 @@ lessonRouter.get("/add", verifyJWT, lessonController.renderSelection);
 lessonRouter.post("/api/lessons", verifyJWT, lessonController.getLessons);
 lessonRouter.post("/api/create", verifyJWT, lessonController.createLesson);
 
+lessonRouter.put("/api/subjects", verifyJWT, lessonController.updateSubjects);
 
 export default lessonRouter;
