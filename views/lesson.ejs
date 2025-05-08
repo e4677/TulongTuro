@@ -64,13 +64,12 @@
       <div class="lesson__chat-display"></div>
 
       <div class="lesson__chat-input-wrapper">
-        <input
-          type="text"
+        <textarea
           class="lesson__chat-input"
           placeholder="Type a message..."
           id="chat-input"
-          required
-        />
+          rows="1"
+        ></textarea>
         <button
           id="send-button"
           class="material-symbols-outlined lesson__send-button"
@@ -159,8 +158,13 @@
         }
       }
 
+      chatInput.addEventListener("input", () => {
+        chatInput.style.height = "auto";
+        chatInput.style.height = chatInput.scrollHeight + "px";
+      });
+
       chatInput.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
+        if (event.key === "Enter" && !event.shiftKey) {
           event.preventDefault();
           startSend();
         }
