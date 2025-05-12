@@ -1,18 +1,26 @@
 <aside class="sidebar">
-	<nav class="sidebar-nav">
-		<h2 class="sidebar-title">
-			<span class="material-symbols-outlined"> school </span>
-			Subjects
-		</h2>
+  <nav class="sidebar-nav">
+    <div class="nav-list-wrapper">
+      <h2 class="sidebar-title">
+        <span class="material-symbols-outlined"> school </span>
+        Subjects
+      </h2>
 
-		<ul class="sidebar-subjects-list" role="list">
-			<% for (let i = 0; i < subjects.length; i++) { %>
-			<li class="sidebar-subject-item"
-				><a class="subject-link" href="/lessons/<%- subjects[i].slug %>"
-					><%- subjects[i].title %></a
-				></li
-			>
-			<% } %>
-		</ul>
-	</nav>
+      <ul class="sidebar-subjects-list" role="list">
+        <% for (let i = 0; i < subjects.length; i++) { %>
+        <li class="sidebar-subject-item">
+          <a class="subject-link" href="/lessons/<%- subjects[i].slug %>"
+            ><%- subjects[i].title %></a
+          >
+        </li>
+        <% } %>
+      </ul>
+    </div>
+
+    <!-- add logout logic -->
+    <button class="logout-button">
+      <span class="material-symbols-outlined"> logout </span>
+      Logout
+    </button>
+  </nav>
 </aside>
