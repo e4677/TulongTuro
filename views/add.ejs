@@ -26,22 +26,26 @@
       <ul class="add__subjects-list">
         <% for (let i = 0; i < subjectList.length; i++) { %>
         <li class="add__subjects-list-item">
-          <div class="add__subject-icon-label-wrapper">
-            <span class="material-symbols-outlined"> book </span>
+          <label class="add__subjects-list-label">
+            <div class="add__subject-icon-label-wrapper">
+              <!-- icon -->
+              <span class="material-symbols-outlined"> book </span>
 
-            <div class="add__subject-label-wrapper">
-              <label class="add__subject-label">
+              <!-- subject title -->
+              <div class="add__subject-label">
                 <%= subjectList[i].title %>
-              </label>
 
-              <!-- Make dynamic (Enrolled or not enrolled) -->
-              <span class="add__subject-status">Enrolled</span>
+                <span class="add__subject-status">
+                  <%= subjectList[i].isSubscribed ? "Enrolled" : "Not Enrolled"
+                  %>
+                </span>
+              </div>
             </div>
-          </div>
 
-          <input class="add__checkbox" <%= subjectList[i].isSubscribed ?
-          "checked" : "" %> type="checkbox" name="topics" value="<%=
-          subjectList[i].slug %>">
+            <input class="add__checkbox" <%= subjectList[i].isSubscribed ?
+            "checked" : "" %> type="checkbox" name="topics" value="<%=
+            subjectList[i].slug %>">
+          </label>
         </li>
         <% } %>
         <button class="add__update-button" onclick="submit()">Update</button>

@@ -101,3 +101,7 @@
   padding: var(--spacing-1);
   background: var(--clr-fg);
 }
+
+.create__button:hover {
+  background: var(--clr-txt-dark);
+}
