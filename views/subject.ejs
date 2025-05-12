@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title><%= subjectTitle %> | Tulong-Turo</title>
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add,attach_file,chevron_right,close,home,menu,school&display=block" />
-		<script src="/js/main.js" defer></script>
-		<link rel="stylesheet" href="/css/subject.css" />
-	</head>
-	<body>
-		<!-- Header -->
-		<%- include('partials/header', { subjectTitle: subjectTitle, subjectSlug:
-		subjectSlug }) %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= subjectTitle %> | Tulong-Turo</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add,attach_file,chevron_right,close,edit,home,menu,school&display=block"
+    />
+    <script src="/js/main.js" defer></script>
+    <link rel="stylesheet" href="/css/subject.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <%- include('partials/header', { subjectTitle: subjectTitle, subjectSlug:
+    subjectSlug }) %>
 
-		<!-- Sidebar -->
-		<%- include('partials/sidenav.ejs') %>
+    <!-- Sidebar -->
+    <%- include('partials/sidenav.ejs') %>
 
-		<main class="subject-main">
-			<div class="subject-title-card"> <%= subjectTitle %> </div>
+    <main class="subject-main">
+      <div class="subject-title-card"><%= subjectTitle %></div>
 
-			<ul class="subject-materials">
-				<% for (let i = 0; i < lessons.length; i++) { %>
-				<li class="material">
-					<a class="material-link" href="/view/<%- lessons[i].id %>">
-						<div class="icon-title-wrapper">
-							<span class="material-symbols-outlined"> attach_file </span>
-							<div class="title-author-wrapper">
-								<span class="title"><%= lessons[i].title %></span>
-								<span class="author">
-									<%= lessons[i].users.first_name %>
-									<%=lessons[i].users.last_name %>
-								</span>
-							</div>
-						</div>
+      <ul class="subject-materials">
+        <% for (let i = 0; i < lessons.length; i++) { %>
+        <li class="material">
+          <a class="material-link" href="/view/<%- lessons[i].id %>">
+            <div class="icon-title-wrapper">
+              <span class="material-symbols-outlined"> attach_file </span>
+              <div class="title-author-wrapper">
+                <span class="title"><%= lessons[i].title %></span>
+                <span class="author">
+                  <%= lessons[i].users.first_name %>
+                  <%=lessons[i].users.last_name %>
+                </span>
+              </div>
+            </div>
 
-						<!-- Date here (Format: May 3)-->
-						<span></span>
-						<!-- <span class="date-created"><%= lessons[i].created_at %></span> -->
-					</a>
-				</li>
-				<% } %>
-			</ul>
-		</main>
-	</body>
+            <!-- Date here (Format: May 3)-->
+            <span></span>
+            <!-- <span class="date-created"><%= lessons[i].created_at %></span> -->
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </main>
+  </body>
 </html>

@@ -142,6 +142,15 @@ h1 {
   gap: var(--spacing-1);
 }
 
+.nav-buttons {
+  color: var(--clr-txt-dark);
+  transition: color 0.3s ease;
+}
+
+.nav-buttons:hover {
+  color: var(--clr-txt);
+}
+
 .add-and-acc-wrapper {
   display: flex;
   justify-content: center;
@@ -161,7 +170,7 @@ aside {
   grid-area: sidebar;
   position: sticky;
   top: 80px;
-  overflow-x: hidden;
+  overflow: hidden;
   white-space: nowrap;
   background-color: var(--clr-bg);
   height: calc(100vh - 80px);

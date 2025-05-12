@@ -2,7 +2,7 @@
 
 .create__main {
   grid-area: main;
-  padding: var(--spacing-2);
+  margin-block: var(--spacing-3);
 }
 
 .create__form {
@@ -14,10 +14,18 @@
 
 .create__title {
   font: var(--font-700);
+  width: min(900px, 100% - 2rem);
+  aspect-ratio: 3.5 / 1;
+  border-radius: var(--rounded-sm);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--spacing-1) var(--spacing-2);
+  background-color: var(--clr-fg);
 }
 
 .create__field {
   position: relative;
+  width: min(900px, 100% - 2rem);
 }
 
 .create__icon {
@@ -28,8 +36,8 @@
 }
 
 .create__input {
-  width: var(--width-md);
-  background-color: var(--clr-fg);
+  width: 100%;
+  background-color: var(--clr-neutral);
   border: none;
   padding: var(--spacing-1) 36px;
   border-radius: var(--rounded-sm);
@@ -49,11 +57,21 @@
   top: -12px;
   font-size: var(--font-sm);
   color: var(--clr-txt);
-  background: linear-gradient(var(--clr-bg), var(--clr-fg));
+  background: linear-gradient(var(--clr-bg), var(--clr-neutral));
 }
 
 .create__input:focus {
   outline: 2px solid var(--clr-txt);
+}
+
+.create__content-title {
+  font: var(--font-700);
+  color: var(--clr-txt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-05);
+  margin-top: var(--spacing-1);
 }
 
 .EasyMDEContainer .editor-toolbar {
@@ -78,11 +96,12 @@
 }
 
 .EasyMDEContainer .CodeMirror {
-  background-color: var(--clr-fg);
+  background-color: var(--clr-neutral);
   border: 0 !important;
   border-radius: var(--rounded-sm) !important;
   caret-color: var(--clr-txt);
-  width: var(--width-md);
+  width: 100% !important;
+  aspect-ratio: 4 / 3;
   margin-inline: auto;
 }
 
@@ -95,7 +114,9 @@
 }
 
 .create__button {
-  width: var(--width-md);
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
   transition: 0.3s ease all;
   border-radius: var(--rounded-sm);
   padding: var(--spacing-1);
