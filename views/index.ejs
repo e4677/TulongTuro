@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Home | Tulong-Turo</title>
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add,chevron_right,close,home,menu,school&display=block" />
-		<script src="/js/main.js" defer></script>
-		<link rel="stylesheet" href="/css/index.css" />
-	</head>
-	<body>
-		<!-- Header -->
-		<%- include('partials/header') %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Tulong-Turo</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add,chevron_right,close,edit,home,menu,school&display=block"
+    />
+    <script src="/js/main.js" defer></script>
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <%- include('partials/header') %>
 
-		<!-- Sidebar -->
-		<%- include('partials/sidenav.ejs') %>
+    <!-- Sidebar -->
+    <%- include('partials/sidenav.ejs') %>
 
-		<!-- Main -->
-		<main class="homepage-main">
-			<!-- make greeting dynamic based on time and username -->
-			<h2 class="greeting"><%= greeting %></h2>
+    <!-- Main -->
+    <main class="homepage-main">
+      <!-- make greeting dynamic based on time and username -->
+      <h2 class="greeting"><%= greeting %></h2>
 
-			<!-- Subjects grid (make this grid dynamic for subjects) -->
-			<div class="subjects-grid">
-				<% for (let i = 0; i < subjects.length; i++) { %>
-				<a class="sub" href="/lessons/<%- subjects[i].slug %>"
-					><%- subjects[i].title %></a
-				>
-				<% } %>
-			</div>
-		</main>
-	</body>
+      <!-- Subjects grid (make this grid dynamic for subjects) -->
+      <div class="subjects-grid">
+        <% for (let i = 0; i < subjects.length; i++) { %>
+        <a class="sub" href="/lessons/<%- subjects[i].slug %>"
+          ><%- subjects[i].title %></a
+        >
+        <% } %>
+      </div>
+    </main>
+  </body>
 </html>

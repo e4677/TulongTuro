@@ -1,36 +1,43 @@
 <header>
-	<nav class="header-nav">
-		<div class="menu-and-logo-wrapper">
-			<!-- hamburger icon -->
-			<button id="toggleButton" class="menu-button">
-				<span class="material-symbols-outlined"> menu </span>
-			</button>
+  <nav class="header-nav">
+    <div class="menu-and-logo-wrapper">
+      <!-- hamburger icon -->
+      <button id="toggleButton" class="menu-button">
+        <span class="material-symbols-outlined"> menu </span>
+      </button>
 
-			<!-- Logo -->
-			<h1>
-				<a class="logo" href="/"> Tulong Turo </a>
+      <!-- Logo -->
+      <h1>
+        <a class="logo" href="/"> Tulong Turo </a>
 
-				<% if (typeof subjectTitle !== 'undefined' && typeof subjectSlug !==
-				'undefined') { %>
-				<span class="material-symbols-outlined"> chevron_right </span>
-				<a class="subject-title" href="/lessons/<%- subjectSlug || '' %>"
-					><%= subjectTitle || 'Untitled Subject' %></a
-				>
-				<% } %>
-			</h1>
-		</div>
+        <% if (typeof subjectTitle !== 'undefined' && typeof subjectSlug !==
+        'undefined') { %>
+        <span class="material-symbols-outlined"> chevron_right </span>
+        <a class="subject-title" href="/lessons/<%- subjectSlug || '' %>"
+          ><%= subjectTitle || 'Untitled Subject' %></a
+        >
+        <% } %>
+      </h1>
+    </div>
 
-		<!-- Add subj button -->
-		<div class="add-and-acc-wrapper">
-			<a href="/add">
-				<button class="add-subject-button">
-					Add subjects
-					<span class="material-symbols-outlined"> add </span>
-				</button>
-			</a>
+    <!-- Add subj button -->
+    <div class="add-and-acc-wrapper">
+      <a href="/create" class="nav-buttons">
+        <button class="create-subject-button">
+          Create lesson
+          <span class="material-symbols-outlined"> add </span>
+        </button>
+      </a>
 
-			<!-- acc icon -->
-			<div class="account-wrapper"> </div>
-		</div>
-	</nav>
+      <a href="/add" class="nav-buttons">
+        <button class="add-subject-button">
+          Edit subjects
+          <span class="material-symbols-outlined"> edit </span>
+        </button>
+      </a>
+
+      <!-- acc icon -->
+      <div class="account-wrapper"></div>
+    </div>
+  </nav>
 </header>
