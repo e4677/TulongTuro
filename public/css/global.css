@@ -120,7 +120,7 @@ h1 {
 }
 
 .logo:hover,
-.sidebar-subject-item:hover .subject-link {
+.sidebar-subject-item .subject-link:hover {
   text-decoration: underline;
 }
 
@@ -192,7 +192,6 @@ body.sidebar-closed {
   display: flex;
   align-items: center;
   gap: var(--spacing-1);
-  margin-bottom: var(--spacing-2);
 }
 
 ul {
@@ -200,7 +199,6 @@ ul {
 }
 
 .sidebar-subjects-list {
-  margin-top: var(--spacing-1);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -227,6 +225,7 @@ ul {
   border-radius: 50%;
   width: 25px;
   aspect-ratio: 1;
+  cursor: default;
 }
 
 .sidebar-subject-item:nth-child(4n + 1)::before {
@@ -243,4 +242,37 @@ ul {
 
 .sidebar-subject-item:nth-child(4n)::before {
   background: linear-gradient(var(--clr-card-4));
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  height: 100%;
+}
+
+.nav-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+}
+
+.logout-button {
+  color: rgb(152, 41, 41);
+  font: var(--font-400);
+  transition: color 0.3s ease;
+  gap: var(--spacing-1);
+  font-size: var(--font-lg);
+}
+
+.logout-button > span {
+  font-size: 1.75rem;
+}
+
+.logout-button:hover {
+  color: rgb(236, 9, 9);
 }
