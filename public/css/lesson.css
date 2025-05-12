@@ -2,14 +2,6 @@
 
 .subject-title {
   font: var(--font-400);
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.back-link:hover .back-text {
-  text-decoration: underline;
 }
 
 .lesson-main {
@@ -32,7 +24,7 @@
   align-items: flex-start;
   justify-content: space-between;
   padding: var(--spacing-1) var(--spacing-2);
-  background-color: var(--clr-neutral);
+  background-color: var(--clr-fg);
 }
 
 .title-author-wrapper {
@@ -48,6 +40,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: var(--clr-txt);
 }
 
 .lesson-author {
@@ -142,20 +139,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.lesson__chat-acc-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--spacing-1);
-}
-
-.lesson__chat-acc-icon {
-  width: 40px;
-  aspect-ratio: 1;
-  border-radius: var(--rounded-full);
-  background-color: var(--clr-neutral);
 }
 
 .lesson__close-button {
