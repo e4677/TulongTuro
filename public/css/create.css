@@ -103,5 +103,5 @@
 }
 
 .create__button:hover {
-  background: var(--clr-txt-dark);
+  background: var(--clr-neutral);
 }
