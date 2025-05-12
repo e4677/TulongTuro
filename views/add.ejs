@@ -6,7 +6,7 @@
     <title>Add Subjects | Tulong-Turo</title>
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add,attach_file,chat_bubble,chevron_left,chevron_right,close,home,menu,school,send&display=block"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add,attach_file,book,chat_bubble,chevron_left,chevron_right,close,home,menu,school,send&display=block"
     />
     <link rel="stylesheet" href="/css/add.css" />
     <script src="/js/main.js" defer></script>
@@ -19,19 +19,29 @@
     <%- include('partials/sidenav.ejs') %> Subjects
 
     <main class="add__main">
-      <h2 class="add__title">Add subjects</h2>
+      <div class="add__title-card">
+        <div>Add subjects</div>
+      </div>
+
       <ul class="add__subjects-list">
         <% for (let i = 0; i < subjectList.length; i++) { %>
         <li class="add__subjects-list-item">
-          <label class="add__subject-label"> <%= subjectList[i].title %></label>
+          <div class="add__subject-icon-label-wrapper">
+            <span class="material-symbols-outlined"> book </span>
 
-          <div class="add__subject-status-wrapper">
-            <!-- Change this later: status must be dynamically updated -->
-            <span class="add__subject-status">Enrolled</span>
+            <div class="add__subject-label-wrapper">
+              <label class="add__subject-label">
+                <%= subjectList[i].title %>
+              </label>
 
-            <input <%= subjectList[i].isSubscribed ? "checked" : "" %>
-            type="checkbox" name="topics" value="<%= subjectList[i].slug %>">
+              <!-- Make dynamic (Enrolled or not enrolled) -->
+              <span class="add__subject-status">Enrolled</span>
+            </div>
           </div>
+
+          <input class="add__checkbox" <%= subjectList[i].isSubscribed ?
+          "checked" : "" %> type="checkbox" name="topics" value="<%=
+          subjectList[i].slug %>">
         </li>
         <% } %>
         <button class="add__update-button" onclick="submit()">Update</button>
