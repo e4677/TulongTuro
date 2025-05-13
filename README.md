@@ -16,6 +16,7 @@
     </li>
     <li><a href="#features">Key Features</a></li>
     <li><a href="#framework">Programming Language and Frameworks Used</a></li>
+    <li><a href="##project-structure">Project Structure</a></li>
     <li><a href="#preview">Preview</a></li>
     <li><a href="#contributing">Contributors</a></li>
     <li><a href="#acknowledgments">Acknowledegments</a></li>
@@ -76,6 +77,60 @@
     </a>
   </li>
 </ul>
+
+<!-- PROJECT STRUCTURE -->
+<h2 id="project-structure">📁 Project Structure</h2>
+
+<details>
+  <summary>📂 Click to view</summary>
+
+<pre>
+TulongTuro-main/
+├── .gitignore
+├── README.md
+├── index.js
+├── package-lock.json
+├── package.json
+├── config/
+│   ├── jwtUtils.js
+│   └── supabaseClient.js
+├── controllers/
+│   ├── chatController.js
+│   ├── commonController.js
+│   ├── lessonController.js
+│   └── userController.js
+├── models/
+│   └── user.js
+├── public/
+│   ├── css/
+│   │   ├── add.css
+│   │   ├── auth.css
+│   │   ├── create.css
+│   │   ├── global.css
+│   │   ├── index.css
+│   │   ├── lesson.css
+│   │   └── subject.css
+│   └── js/
+│       └── main.js
+├── routes/
+│   ├── chatRouter.js
+│   ├── lessonRouter.js
+│   └── userRouter.js
+└── views/
+    ├── add.ejs
+    ├── create.ejs
+    ├── edit.ejs
+    ├── index.ejs
+    ├── lesson.ejs
+    ├── login.ejs
+    ├── signup.ejs
+    ├── subject.ejs
+    └── partials/
+        ├── header.ejs
+        └── sidenav.ejs
+</pre>
+
+</details>
 
 
 <!-- PREVIEW -->
