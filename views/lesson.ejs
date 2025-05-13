@@ -40,6 +40,13 @@
       </div>
     </main>
 
+    <% if (isEditable) { %>
+      <button class="floating-edit-bubble" id="floating-edit-bubble" onclick="window.location.href = '/edit/<%= lesson.id %>'">
+        <p>Edit Lesson</p>
+        <span class="material-symbols-outlined chat-bubble"> edit </span>
+      </button>
+    <% } %>
+
     <button class="floating-chat-bubble" id="floating-chat-bubble">
       <p>Have questions? Ask <%= lesson.users.first_name %></p>
       <span class="material-symbols-outlined chat-bubble"> chat_bubble </span>

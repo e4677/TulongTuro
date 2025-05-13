@@ -52,6 +52,17 @@
   font: var(--font-400);
 }
 
+.floating-edit-bubble {
+  position: fixed;
+  bottom: 120px;
+  right: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-1);
+  color: var(--clr-txt-dark);
+}
+
 .floating-chat-bubble {
   position: fixed;
   bottom: 40px;
