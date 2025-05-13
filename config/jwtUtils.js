@@ -39,5 +39,5 @@ export const verifyJWT = (req, res, next) => {
 
 export const logout = (req, res) => {
   res.clearCookie('auth_token');
-  return res.status(200).json({ message: 'Logged out successfully.' });
+  return res.redirect('/login');
 };
