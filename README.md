@@ -18,7 +18,6 @@
     <li><a href="#framework">Programming Language and Frameworks Used</a></li>
     <li><a href="#preview">Preview</a></li>
     <li><a href="#contributing">Contributors</a></li>
-    <li><a href="#links">Important Links</a></li>
     <li><a href="#acknowledgments">Acknowledegments</a></li>
   </ol>
 </details>
@@ -106,8 +105,6 @@
   </tr> 
 </table>
 
-<!-- IMPORTANT LINKS -->
-<h2 id="links">🔗 Important Links </h2>
 
 <!-- ACKNOLEDGEMENT -->
 <h2 id="acknowledgments">🙏 Acknowledgement </h2>
