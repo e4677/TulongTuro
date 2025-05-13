@@ -163,7 +163,9 @@ export const renderLesson = async (req, res) => {
 
 	const content = marked(lesson.content);
 	const subjects = await getSubscribedSubjects(req.user.userId);
+	const isEditable = lesson.users.id === req.user.userId;
 
+	console.log(lesson);
 	res.render("lesson", {
 		lesson,
 		content,
@@ -171,6 +173,7 @@ export const renderLesson = async (req, res) => {
 		subjectSlug,
 		subjects,
 		user: req.user,
+		isEditable,
 	});
 };
 
@@ -244,6 +247,61 @@ export const updateSubjects = async (req, res) => {
     console.error('Unexpected error:', err);
     return res.status(500).json({ error: 'Internal server error.' });
   }
+};
+
+export const renderLessonEdit = async (req, res) => {
+	const lessonId = req.params.lessonId;
+	console.log(lessonId);
+	let { data: lesson, error } = await supabase
+  .from('lessons')
+  .select("*")
+  .eq('id', lessonId)
+	.single();
+
+	lesson.subject_title = lesson.subject_slug
+		.split("-")
+		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+		.join(" ");
+
+	const subjects = await getSubscribedSubjects(req.user.userId);
+	res.render("edit", { user: req.user, subjects, lesson });
+};
+
+export const editLesson = async (req, res) => {
+	let { lessonId, title, content, subjectSlug } = req.body;
+
+	subjectSlug = subjectSlug
+		.split(' ')
+		.map(word => word.toLowerCase())
+		.join('-');
+
+	const { data, error } = await supabase
+		.from("lessons")
+		.update([
+			{
+				title: title,
+				content: content,
+				subject_slug: subjectSlug,
+			},
+		])
+		.eq('id', lessonId)
+		.select();
+
+	if (error) {
+		console.error("Error creating lesson:", error.message);
+		return res.status(500).json({
+			success: false,
+			message: "Failed to edit lesson.",
+			error: error.message,
+		});
+	}
+
+	res.status(200).json({
+		success: true,
+		message: "Lesson edited successfully.",
+		lesson: data[0],
+		redirect: `/view/${lessonId}`,
+	});
 };
 
 export const getLessonContent = async (req, res) => {};
