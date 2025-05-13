@@ -50,10 +50,33 @@
           <li>Interactive Chatroom</li>
         </ul>
 
-<!-- Programming Language and Frameworks Used -->
-<h2 id="framework"> 🤖 Programming Language and Frameworks Used </h2>
-- **Frontend**: [![HTML][HTML-logo]][HTML-url]  [![CSS][CSS-logo]][CSS-url]  [![JavaScript][JS-logo]][JS-url]
-- **Backend**: [![Express.js][Express-logo]][Express-url] [![Node.js][Node-logo]][Node-url] [![Supabase][Supabase-logo]][Supabase-url]
+<!-- PROGRAMMING LANGUAGE AND FRAMEWORKS -->
+<h2 id="framework">🤖 Programming Language and Frameworks Used</h2>
+<ul>
+  <li><strong>Frontend</strong>: 
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">
+      <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML" />
+    </a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">
+      <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS" />
+    </a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
+      <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+    </a>
+  </li>
+  <li><strong>Backend</strong>: 
+    <a href="https://expressjs.com/">
+      <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
+    </a>
+    <a href="https://nodejs.org/">
+      <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+    </a>
+    <a href="https://supabase.com/">
+      <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" />
+    </a>
+  </li>
+</ul>
+
 
 <!-- PREVIEW -->
 <h2 id="preview">🫣 Preview </h2>
