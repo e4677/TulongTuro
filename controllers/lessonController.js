@@ -118,7 +118,16 @@ export const renderSubject = async (req, res) => {
 		}
 
 		const subjects = await getSubscribedSubjects(req.user.userId);
-		res.render("subject", { subjectTitle, subjectSlug, lessons, subjects });
+		
+		let subjectIndex = 0;
+		for (let i = 0; i < subjects.length; i++) {
+			if (subjects[i].slug === subjectSlug) {
+				subjectIndex = (i % 4) + 1;
+				break;
+			}
+		}
+
+		res.render("subject", { subjectTitle, subjectSlug, lessons, subjects, subjectIndex });
 	} catch (err) {
 		console.error("Unexpected error:", err);
 		res

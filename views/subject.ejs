@@ -20,7 +20,7 @@
     <%- include('partials/sidenav.ejs') %>
 
     <main class="subject-main">
-      <div class="subject-title-card"><%= subjectTitle %></div>
+      <div class="subject-title-card background-<%= subjectIndex %>"><%= subjectTitle %></div>
 
       <ul class="subject-materials">
         <% for (let i = 0; i < lessons.length; i++) { %>
