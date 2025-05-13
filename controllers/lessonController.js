@@ -165,7 +165,6 @@ export const renderLesson = async (req, res) => {
 	const subjects = await getSubscribedSubjects(req.user.userId);
 	const isEditable = lesson.users.id === req.user.userId;
 
-	console.log(lesson);
 	res.render("lesson", {
 		lesson,
 		content,
@@ -251,7 +250,6 @@ export const updateSubjects = async (req, res) => {
 
 export const renderLessonEdit = async (req, res) => {
 	const lessonId = req.params.lessonId;
-	console.log(lessonId);
 	let { data: lesson, error } = await supabase
   .from('lessons')
   .select("*")
