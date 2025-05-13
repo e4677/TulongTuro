@@ -1,3 +1,7 @@
+<!-- PROJECT TITLE AND BADGE -->
+<h1 align="center">Tulong Turo</h1>
+<h3 align="center">An Educational Web Application Enhancing Peer Learning and Collaboration </h3>
+
 [![Contributors][contributors-shield]][contributors-url]
 
 <!-- TABLE OF CONTENTS -->
@@ -48,7 +52,7 @@
         </ul>
 
 <!-- Programming Language and Frameworks Used -->
-## 🤖 Programming Language and Frameworks Used
+<h2 id="framework"> 🤖 Programming Language and Frameworks Used </h2>
 - **Frontend**: [![HTML][HTML-logo]][HTML-url]  [![CSS][CSS-logo]][CSS-url]  [![JavaScript][JS-logo]][JS-url]
 - **Backend**: [![Express.js][Express-logo]][Express-url] [![Node.js][Node-logo]][Node-url] [![Supabase][Supabase-logo]][Supabase-url]
 
