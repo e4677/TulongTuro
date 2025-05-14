@@ -133,7 +133,50 @@ TulongTuro-main/
 
 </details>
 
-<h2 id="getting-started">🏥 Getting Started </h2>
+<h2 id="getting-started">🚀 Getting Started </h2>
+
+Follow these steps to set up the **TulongTuro** application on your local machine.
+
+### ✅ Prerequisites
+
+Ensure the following are installed:
+
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Git](https://git-scm.com/)
+- [Supabase](https://supabase.com/) account with a project
+- PostgreSQL database (provided by Supabase)
+
+### 🔧 Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/e4677/TulongTuro.git
+   cd TulongTuro
+2. **Install dependencies**
+
+   ```bash
+   npm install
+
+3. **Set up environment variables**
+
+   Create a `.env` file in the root directory and add your Supabase credentials:
+
+   ```env
+   SUPABASE_URL=your_supabase_url
+   SUPABASE_KEY=your_supabase_anon_or_service_role_key
+
+4. **Run the development server**
+
+   ```bash
+   npm run dev
+
+5. **Open the application**
+
+   ```bash
+   http://localhost:3000
+
 
 <!-- PREVIEW -->
 <h2 id="preview">🫣 Preview </h2>
