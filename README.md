@@ -16,8 +16,12 @@
     </li>
     <li><a href="#features">Key Features</a></li>
     <li><a href="#framework">Programming Language and Frameworks Used</a></li>
-    <li><a href="##project-structure">Project Structure</a></li>
+    <li><a href="#project-structure">Project Structure</a></li>
     <li><a href="#getting-started">Getting Started</a></li>
+      <ul>
+        <li><a href="#pre">Prerequisites</a></li>
+        <li><a href="#ins">Installation</a></li>
+      </ul>
     <li><a href="#preview">Preview</a></li>
     <li><a href="#contributing">Contributors</a></li>
     <li><a href="#acknowledgments">Acknowledegments</a></li>
@@ -137,8 +141,7 @@ TulongTuro-main/
 
 Follow these steps to set up the **TulongTuro** application on your local machine.
 
-### ✅ Prerequisites
-
+<h3 id="pre">✅ Prerequisites </h3>
 Ensure the following are installed:
 
 - [Node.js](https://nodejs.org/) (v16 or higher)
@@ -147,18 +150,19 @@ Ensure the following are installed:
 - [Supabase](https://supabase.com/) account with a project
 - PostgreSQL database (provided by Supabase)
 
-### 🔧 Installation
+<h3 id="ins">🔧 Installation </h3>
 
 1. **Clone the repository**
 
    ```bash
    git clone https://github.com/e4677/TulongTuro.git
    cd TulongTuro
+   ```
 2. **Install dependencies**
 
    ```bash
    npm install
-
+   ```
 3. **Set up environment variables**
 
    Create a `.env` file in the root directory and add your Supabase credentials:
@@ -166,27 +170,28 @@ Ensure the following are installed:
    ```env
    SUPABASE_URL=your_supabase_url
    SUPABASE_KEY=your_supabase_anon_or_service_role_key
-
+   ```
 4. **Run the development server**
 
    ```bash
    npm run dev
-
+   ```
 5. **Open the application**
 
    ```bash
    http://localhost:3000
-
-
+   ```
 <!-- PREVIEW -->
 <h2 id="preview">🫣 Preview </h2>
 
 <div align="center">
   <table>
-    <tr>
-      <td><img src="https://github.com/user-attachments/assets/7a3d42ff-0bfc-40bf-af27-e4bdb753bffb" width="380"></td>
-      <td><img src="https://github.com/user-attachments/assets/2d8475de-b925-4133-8d9d-047437660a43" width="380"></td>
-      <td><img src="https://github.com/user-attachments/assets/90dc4eaf-ee0f-499e-b01e-a8a1bdd2ad5c" width="380"></td>
+    <tr> 
+      <td><img src="https://github.com/user-attachments/assets/6a4063e5-0eb7-401f-88c6-46a1e66344ee" width="380"></td>
+      <td><img src="https://github.com/user-attachments/assets/44b695ba-128d-413f-8a1e-e95f54cd01e7" width="380"></td>
+      <td><img src="https://github.com/user-attachments/assets/926c1cd1-7973-4aac-a3ad-9ba9c0856d38" width="380"></td>
+      <td><img src="https://github.com/user-attachments/assets/8844866b-9a4f-4db6-9528-ee6851ee78b2" width="380"></td>
+      <td><img src="https://github.com/user-attachments/assets/43b623b7-3961-46b1-bcb5-04aa1180ce71" width="380"></td>
     </tr>
   </table>
 </div>
