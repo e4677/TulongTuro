@@ -17,6 +17,7 @@
     <li><a href="#features">Key Features</a></li>
     <li><a href="#framework">Programming Language and Frameworks Used</a></li>
     <li><a href="##project-structure">Project Structure</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
     <li><a href="#preview">Preview</a></li>
     <li><a href="#contributing">Contributors</a></li>
     <li><a href="#acknowledgments">Acknowledegments</a></li>
@@ -132,6 +133,7 @@ TulongTuro-main/
 
 </details>
 
+<h2 id="getting-started">🏥 Getting Started </h2>
 
 <!-- PREVIEW -->
 <h2 id="preview">🫣 Preview </h2>
